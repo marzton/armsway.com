@@ -1,264 +1,57 @@
-/* ============================================================
-   ArmsWay™ — Main Stylesheet
-   ============================================================ */
-
-/* ---- Reset & Base ---------------------------------------- */
-*, *::before, *::after { box-sizing: border-box; }
-
 body {
   background: #ffffff;
   color: #2d2d2d;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Segoe UI", sans-serif;
   line-height: 1.6;
   margin: 0;
   padding: 0;
 }
 
-a { color: #e74c3c; text-decoration: none; }
-a:hover { text-decoration: underline; }
-
-/* ---- Header ---------------------------------------------- */
 header {
   text-align: center;
   background: #e74c3c;
   color: white;
-  padding: 2rem 1rem 1.5rem;
+  padding: 2rem 1rem;
 }
-
-header a { color: white; text-decoration: none; }
 
 .logo {
   max-width: 180px;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
-
-header h1 { margin: 0 0 0.25rem; font-size: 2rem; }
 
 .tagline {
   font-style: italic;
   font-size: 1.1rem;
-  margin: 0;
-  opacity: 0.92;
 }
 
-/* ---- Navigation ------------------------------------------ */
-.site-nav {
-  background: #222;
-  padding: 0 1rem;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-}
-
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  cursor: pointer;
-  padding: 0.75rem 0;
-  margin-right: auto;
-}
-
-.nav-links {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  gap: 0;
-}
-
-.nav-links li a {
-  display: block;
-  color: #ddd;
-  padding: 0.75rem 1rem;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-}
-
-.nav-links li a:hover {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-cta {
-  background: #e74c3c;
-  color: white !important;
-  border-radius: 4px;
-  margin-left: 0.5rem;
-}
-
-.nav-cta:hover { background: #c0392b; }
-
-/* ---- Hero ------------------------------------------------- */
 .hero {
-  padding: 3rem 2rem;
+  padding: 2rem;
   background: #f7f7f7;
   text-align: center;
 }
 
-.hero h2 {
-  font-size: 1.8rem;
-  margin-bottom: 0.75rem;
-}
-
-.hero p { max-width: 600px; margin: 0 auto 1.5rem; font-size: 1.05rem; }
-
 .cta {
   background: #e74c3c;
   color: white;
-  padding: 0.8rem 1.6rem;
-  border: 2px solid #e74c3c;
+  padding: 0.8rem 1.4rem;
+  border: none;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
   display: inline-block;
-  margin: 0.4rem 0.3rem;
-  transition: background 0.2s, color 0.2s;
+  margin-top: 1rem;
 }
 
-.cta:hover { background: #c0392b; border-color: #c0392b; text-decoration: none; color: white; }
-
-.cta--outline {
-  background: transparent;
-  color: #e74c3c;
-}
-
-.cta--outline:hover { background: #e74c3c; color: white; }
-
-/* ---- Trust Section --------------------------------------- */
-.trust-section {
-  padding: 2.5rem 2rem;
-  background: #fff;
-  text-align: center;
-}
-
-.trust-section h3 { margin-bottom: 1.5rem; font-size: 1.4rem; }
-
-.trust-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.trust-item {
-  background: #f9f9f9;
-  border-radius: 8px;
-  padding: 1.5rem 1rem;
-}
-
-.trust-icon { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
-.trust-item strong { display: block; margin-bottom: 0.4rem; font-size: 1rem; }
-.trust-item p { margin: 0; font-size: 0.9rem; color: #555; }
-
-/* ---- Features -------------------------------------------- */
-.features-section {
-  padding: 2.5rem 2rem;
-  background: #f0f4f8;
-  text-align: center;
-}
-
-.features-section h3 { margin-bottom: 1.5rem; font-size: 1.4rem; }
-
-.features-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.2rem;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.feature-card {
-  background: white;
-  border-radius: 8px;
-  padding: 1.25rem;
-  text-align: left;
-  border-left: 4px solid #e74c3c;
-}
-
-.feature-card h4 { margin: 0 0 0.5rem; color: #e74c3c; font-size: 1rem; }
-.feature-card p { margin: 0; font-size: 0.9rem; color: #444; }
-
-/* ---- Docs ------------------------------------------------- */
-.docs {
-  padding: 2rem;
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.docs h3 { margin-bottom: 1rem; }
-
-.docs ul { padding-left: 1.2rem; }
-.docs li { margin-bottom: 0.5rem; }
-.docs a { font-weight: 500; }
-
-/* ---- FAQ -------------------------------------------------- */
-.faq-section {
-  padding: 2.5rem 2rem;
-  background: #fafafa;
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.faq-section h3 { margin-bottom: 1.5rem; font-size: 1.4rem; }
-
-.faq-item {
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  margin-bottom: 0.75rem;
-  background: white;
-}
-
-.faq-item summary {
-  cursor: pointer;
-  padding: 1rem 1.25rem;
-  font-weight: 600;
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.faq-item summary::-webkit-details-marker { display: none; }
-
-.faq-item summary::after {
-  content: '+';
-  font-size: 1.2rem;
-  color: #e74c3c;
-  font-weight: bold;
-}
-
-.faq-item[open] summary::after { content: '−'; }
-
-.faq-item p {
-  margin: 0;
-  padding: 0 1.25rem 1rem;
-  color: #555;
-  font-size: 0.95rem;
-}
-
-/* ---- Inquiry Form ---------------------------------------- */
 .inquiry-form {
-  padding: 2.5rem 2rem;
-  background: #fff;
-  text-align: center;
+  padding: 2rem;
+  background: #fafafa;
 }
-
-.inquiry-form h3 { font-size: 1.4rem; margin-bottom: 0.5rem; }
-.form-intro { color: #666; margin-bottom: 1.5rem; }
 
 .inquiry-form form {
   display: flex;
   flex-direction: column;
   max-width: 500px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 .inquiry-form input,
@@ -266,240 +59,21 @@ header h1 { margin: 0 0 0.25rem; font-size: 2rem; }
   margin: 0.5rem 0;
   padding: 0.8rem;
   font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
 }
 
-.inquiry-form button,
-.optin-form button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 0.9rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
-}
-
-.inquiry-form button:hover,
-.optin-form button:hover { background: #c0392b; }
-
-.form-success {
-  max-width: 500px;
-  margin: 1rem auto 0;
-  background: #eafaf1;
-  border: 1px solid #27ae60;
-  border-radius: 6px;
-  padding: 1rem 1.5rem;
-  color: #1e8449;
-  text-align: center;
-}
-
-/* ---- Email Opt-In ---------------------------------------- */
-.optin-section {
-  padding: 2.5rem 2rem;
-  background: #e74c3c;
-  color: white;
-  text-align: center;
-}
-
-.optin-section h3 { font-size: 1.4rem; margin-bottom: 0.5rem; color: white; }
-.optin-section p { color: rgba(255,255,255,0.9); margin-bottom: 1rem; }
-
-.optin-form {
-  display: flex;
-  flex-direction: column;
-  max-width: 440px;
-  margin: 0 auto 0.75rem;
-  gap: 0.5rem;
-}
-
-.optin-form input {
-  padding: 0.8rem;
-  font-size: 1rem;
-  border: none;
-  border-radius: 4px;
-  font-family: inherit;
-}
-
-.optin-form button {
-  background: #222;
-  border: none;
-}
-
-.optin-form button:hover { background: #000; }
-
-.optin-fine-print {
-  font-size: 0.8rem;
-  color: rgba(255,255,255,0.75);
-}
-
-.optin-fine-print a { color: rgba(255,255,255,0.9); text-decoration: underline; }
-
-/* ---- Content Pages (privacy/legal) ----------------------- */
-.content-page {
-  max-width: 760px;
-  margin: 2rem auto;
-  padding: 0 1.5rem 3rem;
-}
-
-.content-page h2 { font-size: 1.8rem; margin-bottom: 0.25rem; }
-.content-page h3 { font-size: 1.15rem; margin-top: 1.75rem; color: #e74c3c; }
-.content-page p, .content-page li { font-size: 0.97rem; color: #444; }
-.content-page ul { padding-left: 1.4rem; }
-.content-page li { margin-bottom: 0.4rem; }
-
-/* ---- Distributor Search Page ----------------------------- */
-.search-hero {
-  padding: 2.5rem 2rem;
-  background: #f7f7f7;
-  text-align: center;
-}
-
-.search-hero h2 { margin-bottom: 0.5rem; }
-.search-hero p { max-width: 600px; margin: 0 auto; color: #555; }
-
-.distributor-search {
-  padding: 2rem;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.distributor-search h3 { margin-bottom: 1.25rem; }
-
-.search-bar {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.search-bar input {
-  flex: 1;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
-}
-
-.search-bar button {
-  background: #e74c3c;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
-  font-weight: bold;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.search-bar button:hover { background: #c0392b; }
-
-.distributor-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1.25rem;
-}
-
-.distributor-card {
-  background: #fff;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 1.5rem;
-  position: relative;
-}
-
-.dist-badge {
-  display: inline-block;
-  background: #ddd;
-  color: #444;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 0.2rem 0.5rem;
-  border-radius: 3px;
-  margin-bottom: 0.5rem;
-}
-
-.dist-badge--primary { background: #e74c3c; color: white; }
-
-.distributor-card h4 { margin: 0.25rem 0 0.1rem; font-size: 1.1rem; }
-.dist-type { font-size: 0.85rem; color: #777; margin: 0 0 0.75rem; }
-.distributor-card p { font-size: 0.9rem; color: #555; margin-bottom: 0.75rem; }
-
-.distributor-card ul {
-  padding-left: 1.1rem;
-  margin: 0 0 1rem;
-  font-size: 0.88rem;
-  color: #444;
-}
-
-.distributor-card li { margin-bottom: 0.3rem; }
-
-.dist-link {
-  display: inline-block;
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #e74c3c;
-}
-
-.dist-link.cta { color: white; }
-
-.no-results { text-align: center; color: #777; padding: 1.5rem 0; }
-
-.become-distributor {
-  padding: 2.5rem 2rem;
-  background: #f0f4f8;
-  text-align: center;
-}
-
-.become-distributor h3 { margin-bottom: 0.75rem; font-size: 1.4rem; }
-.become-distributor p { max-width: 560px; margin: 0 auto 1.25rem; color: #555; }
-
-/* ---- Footer ---------------------------------------------- */
 footer {
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   background: #222;
-  color: #ccc;
+  color: white;
   font-size: 0.9rem;
-  line-height: 1.8;
 }
 
-footer a { color: #e74c3c; }
-footer p { margin: 0.2rem 0; }
+footer a {
+  color: inherit;
+}
 
-/* ---- Mobile Responsive ----------------------------------- */
-@media (max-width: 640px) {
-  .nav-toggle { display: block; }
-
-  .nav-links {
-    display: none;
-    flex-direction: column;
-    width: 100%;
-    background: #222;
-    padding-bottom: 0.5rem;
-  }
-
-  .nav-links.open { display: flex; }
-
-  .nav-links li a { padding: 0.65rem 1rem; }
-
-  .nav-cta { margin-left: 0; border-radius: 0; }
-
-  .hero { padding: 2rem 1rem; }
-  .hero h2 { font-size: 1.4rem; }
-
-  .trust-grid,
-  .features-grid,
-  .distributor-grid { grid-template-columns: 1fr; }
-
-  .search-bar { flex-direction: column; }
-
-  .content-page { padding: 0 1rem 2rem; }
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
 }
