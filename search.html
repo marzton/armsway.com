@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Find a Distributor — ArmsWay™ BP Cuff Sleeves</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Find authorized distributors and suppliers of ArmsWay™ disposable BP cuff barrier sleeves near you.">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Find a Distributor — ArmsWay™ BP Cuff Sleeves" />
+  <meta property="og:description" content="Locate authorized distributors of ArmsWay™ disposable blood pressure cuff barrier sleeves." />
+  <meta property="og:url" content="https://armsway.com/search.html" />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <header>
+    <a href="/"><img src="logo.png" alt="ArmsWay Logo" class="logo" /></a>
+    <h1>ArmsWay™</h1>
+    <p class="tagline">Find a Distributor Near You</p>
+  </header>
+
+  <nav class="site-nav">
+    <a href="/">Home</a>
+    <a href="/#inquiry">Request a Quote</a>
+    <a href="/privacy.html">Privacy</a>
+    <a href="/legal.html">Legal &amp; IP</a>
+  </nav>
+
+  <main>
+    <section class="search-hero">
+      <h2>Locate ArmsWay™ Products</h2>
+      <p>ArmsWay™ barrier sleeves are distributed through leading medical supply companies nationwide. Search below to find a supplier or contact us directly for bulk purchasing.</p>
+    </section>
+
+    <section class="distributor-search">
+      <h3>Search Distributors</h3>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search by name, state, or specialty…" aria-label="Search distributors" />
+        <button id="search-btn" onclick="filterDistributors()">Search</button>
+      </div>
+
+      <div class="distributor-grid" id="distributor-list">
+
+        <div class="distributor-card" data-tags="national hospital surgical">
+          <div class="dist-badge">National</div>
+          <h4>Hopkins Medical Products</h4>
+          <p class="dist-type">Medical Supply Distributor</p>
+          <p>Specializes in blood pressure accessories and infection control supplies for hospitals and clinics nationwide.</p>
+          <ul>
+            <li>📦 Bulk &amp; individual unit orders</li>
+            <li>🏥 Hospital &amp; clinical supply</li>
+            <li>🇺🇸 Ships nationwide</li>
+          </ul>
+          <a href="docs/Hopkins Medical Products.pdf" class="dist-link" target="_blank">View Product Sheet</a>
+        </div>
+
+        <div class="distributor-card" data-tags="national dynarex disposable">
+          <div class="dist-badge">National</div>
+          <h4>Dynarex Corporation</h4>
+          <p class="dist-type">Medical Disposables Manufacturer &amp; Distributor</p>
+          <p>One of the largest disposable medical products companies in the US, distributing barrier sleeves under their SS-2136 line.</p>
+          <ul>
+            <li>📦 Case &amp; pallet quantities</li>
+            <li>🏥 Nursing homes, hospitals, EMS</li>
+            <li>🇺🇸 National distribution network</li>
+          </ul>
+          <a href="docs/SS_2136-Barrier-Sleeves.pdf" class="dist-link" target="_blank">View Spec Sheet</a>
+        </div>
+
+        <div class="distributor-card" data-tags="direct armsway bulk wholesale">
+          <div class="dist-badge dist-badge--primary">Direct</div>
+          <h4>ArmsWay™ Direct</h4>
+          <p class="dist-type">Manufacturer Direct — Bulk &amp; Wholesale</p>
+          <p>Purchase directly from ArmsWay™ for the best pricing on large orders, private-label options, or custom packaging.</p>
+          <ul>
+            <li>💰 Best pricing for bulk orders</li>
+            <li>🏷️ Private label available</li>
+            <li>📞 Dedicated B2B support</li>
+          </ul>
+          <a href="/#inquiry" class="dist-link cta">Request a Quote</a>
+        </div>
+
+      </div>
+
+      <p class="no-results" id="no-results" style="display:none;">No distributors found matching your search. <a href="/#inquiry">Contact us directly.</a></p>
+    </section>
+
+    <section class="become-distributor">
+      <h3>Become an Authorized Distributor</h3>
+      <p>We are actively expanding our distribution network. If your company distributes medical supplies to hospitals, clinics, or EMS providers, we'd love to partner with you.</p>
+      <a href="/#inquiry" class="cta">Inquire About Distribution Rights</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 ArmsWay™ | US Patent #XXXXXXX | <a href="mailto:info@armsway.com">info@armsway.com</a></p>
+    <a href="/privacy.html">Privacy</a> • <a href="/legal.html">Legal &amp; IP Notice</a>
+  </footer>
+
+  <script>
+    function filterDistributors() {
+      var query = document.getElementById('search-input').value.toLowerCase().trim();
+      var cards = document.querySelectorAll('.distributor-card');
+      var anyVisible = false;
+      cards.forEach(function(card) {
+        var text = (card.textContent + ' ' + (card.dataset.tags || '')).toLowerCase();
+        if (!query || text.indexOf(query) !== -1) {
+          card.style.display = '';
+          anyVisible = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      document.getElementById('no-results').style.display = anyVisible ? 'none' : 'block';
+    }
+
+    document.getElementById('search-input').addEventListener('keyup', function(e) {
+      if (e.key === 'Enter') filterDistributors();
+    });
+  </script>
+</body>
+</html>
