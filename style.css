@@ -72,3 +72,12 @@ footer {
   color: white;
   font-size: 0.9rem;
 }
+
+footer a {
+  color: inherit;
+}
+
+footer a:hover,
+footer a:focus {
+  text-decoration: underline;
+}
