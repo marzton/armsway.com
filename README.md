@@ -28,12 +28,20 @@ Optional integration via:
 
 —
 
-## 🚀 Deployment
+## 🚀 Deployment (Live Production)
 
-- Hosted via **GitHub Pages**
-- Branch: `main`
-- Static only, no build step (use `.nojekyll`)
-- Recommend enabling GitHub Actions later for automation
+- Hosted via **GitHub Pages** with automated deploys from `main`
+- Workflow: `.github/workflows/deploy-pages.yml`
+- Static only, no build step (`.nojekyll` is included)
+
+### Production go-live checklist
+
+1. In GitHub repo settings, set **Pages → Source** to **GitHub Actions**.
+2. Confirm `CNAME` contains `armsway.com`.
+3. In Cloudflare DNS, point apex and `www` to GitHub Pages records.
+4. In Cloudflare SSL/TLS, use **Full (strict)** and enable **Always Use HTTPS**.
+5. Push to `main` and verify a successful **Deploy static site to GitHub Pages** run.
+6. Verify both `https://armsway.com` and `https://www.armsway.com` resolve to the live site.
 
 —
 
