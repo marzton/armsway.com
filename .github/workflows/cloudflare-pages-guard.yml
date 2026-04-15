@@ -1,0 +1,44 @@
+name: Cloudflare Pages Guard
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  verify-pages-project:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: test -f ops/cloudflare-pages-required.json
+      - name: Verify Cloudflare Pages secrets are present
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          test -n "$CLOUDFLARE_API_TOKEN" || (echo "Missing CLOUDFLARE_API_TOKEN" && exit 1)
+          test -n "$CLOUDFLARE_ACCOUNT_ID" || (echo "Missing CLOUDFLARE_ACCOUNT_ID" && exit 1)
+      - name: Validate Pages project and attached domains
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          def cf_get(url):
+              req = urllib.request.Request(url, headers={'Authorization': f"Bearer {os.environ['CLOUDFLARE_API_TOKEN']}", 'Content-Type': 'application/json'})
+              with urllib.request.urlopen(req) as resp:
+                  data = json.loads(resp.read().decode())
+              if not data.get('success'):
+                  raise SystemExit(f"Cloudflare API error for {url}: {data}")
+              return data['result']
+          cfg = json.load(open('ops/cloudflare-pages-required.json', 'r', encoding='utf-8'))
+          account = os.environ['CLOUDFLARE_ACCOUNT_ID']
+          project = cfg['project_name']
+          project_data = cf_get(f"https://api.cloudflare.com/client/v4/accounts/{account}/pages/projects/{project}")
+          domains = set(project_data.get('domains', []))
+          missing = [d for d in cfg.get('production_domains', []) if d not in domains]
+          if missing:
+              raise SystemExit(f"Missing required Pages custom domains: {', '.join(missing)}")
+          print('Cloudflare Pages guard passed.')
+          PY
