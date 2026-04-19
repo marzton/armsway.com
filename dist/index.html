@@ -3,304 +3,366 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Armsway — by invitation." />
+  <meta name="description" content="Armsway — by referral only." />
   <meta name="robots" content="noindex, nofollow" />
   <title>Armsway</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet" />
-
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --void: #08090a;
-      --void-mid: #111316;
-      --void-soft: #1c1f24;
-      --edge: #2a2e35;
-      --signal: #e8f4f0;
-      --signal-dim: rgba(232,244,240,0.5);
-      --signal-ghost: rgba(232,244,240,0.08);
-      --accent: #7fffd4;  /* aquamarine — precision, not warmth */
-      --accent-dim: rgba(127,255,212,0.15);
-      --accent-ghost: rgba(127,255,212,0.04);
-      --danger: #ff4444;
-      --sans: 'Syne', system-ui, sans-serif;
-      --mono: 'Syne Mono', 'Courier New', monospace;
+      --clinical-white: #f8fafc;
+      --clinical-off:   #eef2f7;
+      --rule:           #dce4ef;
+      --ink:            #0f1923;
+      --ink-mid:        #1e2d3d;
+      --ink-soft:       #2d3f52;
+      --muted:          #64788f;
+      --faint:          #94a9be;
+      --medical-blue:   #1a4fa0;
+      --medical-teal:   #0d7377;
+      --medical-teal-pale: rgba(13,115,119,0.08);
+      --medical-red:    #b91c1c;
+      --sans:           'IBM Plex Sans', system-ui, sans-serif;
+      --mono:           'IBM Plex Mono', monospace;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; height: 100%; }
+    html { font-size: 16px; }
 
     body {
       font-family: var(--sans);
-      background: var(--void);
-      color: var(--signal);
+      background: var(--clinical-white);
+      color: var(--ink);
       min-height: 100vh;
-      display: grid;
-      grid-template-rows: 1fr auto;
       -webkit-font-smoothing: antialiased;
-      position: relative;
-      overflow-x: hidden;
     }
 
-    /* Grid background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(127,255,212,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(127,255,212,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Vignette */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 30%, var(--void) 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--medical-blue);
+      padding: 0.5rem 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.5rem 3rem;
     }
 
-    .nav-wordmark {
-      font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--signal);
-      text-decoration: none;
-    }
-
-    .nav-badge {
+    .topbar-text {
       font-family: var(--mono);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(127,255,212,0.3);
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
+      color: rgba(255,255,255,0.5);
     }
 
-    /* ── MAIN ── */
-    main {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 8rem 2rem 4rem;
-      text-align: center;
-    }
-
-    .eyebrow {
+    .topbar-badge {
       font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.2rem 0.6rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: white;
+      border-bottom: 2px solid var(--medical-blue);
+      padding: 1.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
       gap: 1rem;
     }
 
-    .eyebrow::before,
-    .eyebrow::after {
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      background: var(--medical-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-mark svg { width: 20px; height: 20px; fill: white; }
+
+    .logo-name {
+      font-family: var(--sans);
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+
+    .logo-tagline {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 0.15rem;
+    }
+
+    .header-right {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--medical-blue);
+      border: 1px solid var(--medical-blue);
+      padding: 0.4rem 1rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--clinical-off);
+      border-bottom: 1px solid var(--rule);
+      padding: 5rem 3rem;
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero-kicker {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--medical-teal);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .hero-kicker::before {
       content: '';
       display: block;
-      width: 40px;
+      width: 24px;
       height: 1px;
-      background: rgba(127,255,212,0.3);
+      background: var(--medical-teal);
     }
 
-    .headline {
-      font-family: var(--sans);
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-      color: var(--signal);
-      margin-bottom: 2.5rem;
+    .hero-title {
+      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--ink);
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
     }
 
-    .headline span {
-      display: block;
-      color: var(--accent);
+    .hero-title strong {
+      font-weight: 500;
+      color: var(--medical-blue);
     }
 
-    .subline {
-      font-size: 1rem;
+    .hero-desc {
+      font-size: 0.98rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 48ch;
+      margin-bottom: 2rem;
+      border-left: 3px solid var(--rule);
+      padding-left: 1.25rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      background: white;
+      border: 1px solid var(--rule);
+    }
+
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .meta-row:last-child { border-bottom: none; }
+
+    .meta-key {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .meta-val {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--ink);
       font-weight: 400;
-      color: var(--signal-dim);
-      max-width: 38ch;
-      line-height: 1.7;
-      margin: 0 auto 4rem;
     }
+
+    .meta-val.active { color: var(--medical-teal); }
+    .meta-val.restricted { color: var(--medical-blue); }
 
     /* ── INTAKE FORM ── */
-    .intake {
-      width: 100%;
-      max-width: 480px;
-      background: var(--void-soft);
-      border: 1px solid var(--edge);
-      padding: 2.5rem;
-      text-align: left;
-      position: relative;
+    .intake-section {
+      background: white;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 4rem 3rem;
     }
 
-    .intake::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
+    .intake-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 560px;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .intake-label {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--medical-teal);
+      margin-bottom: 1rem;
     }
 
     .intake-title {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .intake-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 40ch;
     }
 
     .intake-form {
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      background: var(--clinical-off);
+      border: 1px solid var(--rule);
+      padding: 2rem;
+      position: relative;
     }
 
-    .intake-field {
+    .intake-form::before {
+      content: 'INTAKE FORM — CONFIDENTIAL';
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
+      color: var(--faint);
+      margin-bottom: 0.5rem;
+    }
+
+    .ifield {
       display: flex;
       flex-direction: column;
-      gap: 0.35rem;
+      gap: 0.3rem;
     }
 
-    .intake-field label {
+    .ifield label {
       font-family: var(--mono);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--signal-dim);
+      color: var(--muted);
     }
 
-    .intake-field input,
-    .intake-field textarea {
-      background: var(--void-mid);
-      border: 1px solid var(--edge);
-      color: var(--signal);
+    .ifield input,
+    .ifield textarea,
+    .ifield select {
+      background: white;
+      border: 1px solid var(--rule);
+      border-top: 2px solid var(--rule);
+      color: var(--ink);
       font-family: var(--sans);
-      font-size: 0.9rem;
-      padding: 0.75rem 1rem;
+      font-size: 0.88rem;
+      padding: 0.7rem 0.9rem;
       outline: none;
-      transition: border-color 0.2s;
-      border-radius: 1px;
+      transition: border-color 150ms, border-top-color 150ms;
+      -webkit-appearance: none;
       width: 100%;
     }
 
-    .intake-field input:focus,
-    .intake-field textarea:focus {
-      border-color: rgba(127,255,212,0.4);
+    .ifield input:focus,
+    .ifield textarea:focus,
+    .ifield select:focus {
+      border-top-color: var(--medical-blue);
+      border-color: rgba(26,79,160,0.3);
     }
 
-    .intake-field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
+    .ifield textarea { min-height: 90px; resize: vertical; }
+    .ifield select option { background: white; }
 
-    .intake-field input::placeholder,
-    .intake-field textarea::placeholder {
-      color: rgba(232,244,240,0.2);
-      font-size: 0.85rem;
-    }
+    .irow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .hp-field { display: none !important; }
 
     .intake-submit {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
+      background: var(--medical-blue);
+      color: white;
+      border: none;
       font-family: var(--mono);
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      padding: 0.85rem 1.5rem;
+      padding: 0.85rem 2rem;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
+      transition: background 150ms;
       width: 100%;
-      margin-top: 0.5rem;
+      margin-top: 0.25rem;
     }
 
-    .intake-submit:hover {
-      background: var(--accent-dim);
-    }
-
-    .intake-submit:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
+    .intake-submit:hover { background: var(--ink-mid); }
+    .intake-submit:disabled { opacity: 0.4; cursor: not-allowed; }
 
     .intake-notice {
       font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      margin-top: 0.75rem;
+      font-size: 0.6rem;
+      letter-spacing: 0.06em;
+      text-align: center;
       min-height: 1.2em;
     }
 
-    /* ── SPECS STRIP ── */
-    .specs {
-      display: flex;
-      gap: 3rem;
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--edge);
-    }
-
-    .spec {
-      text-align: center;
-    }
-
-    .spec-value {
-      font-family: var(--sans);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--signal);
-      margin-bottom: 0.3rem;
-    }
-
-    .spec-key {
+    .intake-disclaimer {
       font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--signal-dim);
+      font-size: 0.55rem;
+      letter-spacing: 0.06em;
+      color: var(--faint);
+      text-align: center;
+      line-height: 1.6;
+      border-top: 1px solid var(--rule);
+      padding-top: 0.75rem;
+      margin-top: 0.25rem;
     }
 
     /* ── FOOTER ── */
     footer {
-      position: relative;
-      z-index: 1;
+      background: var(--ink);
+      color: white;
       padding: 1.5rem 3rem;
-      border-top: 1px solid var(--edge);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -308,138 +370,213 @@
 
     .footer-copy {
       font-family: var(--mono);
-      font-size: 0.58rem;
+      font-size: 0.55rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(232,244,240,0.2);
+      color: rgba(255,255,255,0.25);
     }
 
-    .footer-legal {
+    .footer-links {
       display: flex;
       gap: 2rem;
       list-style: none;
     }
 
-    .footer-legal a {
+    .footer-links a {
       font-family: var(--mono);
-      font-size: 0.58rem;
+      font-size: 0.55rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(232,244,240,0.2);
+      color: rgba(255,255,255,0.25);
       text-decoration: none;
-      transition: color 0.2s;
+      transition: color 150ms;
     }
 
-    .footer-legal a:hover { color: var(--accent); }
+    .footer-links a:hover { color: rgba(255,255,255,0.6); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: 2.5rem; }
+      .intake-inner { grid-template-columns: 1fr; gap: 2rem; }
+    }
 
     @media (max-width: 640px) {
-      nav { padding: 1.25rem 1.5rem; }
-      main { padding: 7rem 1.5rem 3rem; }
-      .specs { flex-direction: column; gap: 1.5rem; align-items: center; }
+      .topbar, header, .hero, .intake-section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding-top: 3rem; padding-bottom: 3rem; }
+      .irow { grid-template-columns: 1fr; }
+      .intake-form { padding: 1.5rem; }
       footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .intake { padding: 1.75rem; }
     }
   </style>
 </head>
-
 <body>
 
-  <nav>
-    <a href="/" class="nav-wordmark">Armsway</a>
-    <span class="nav-badge">Private access</span>
-  </nav>
+<div class="topbar">
+  <span class="topbar-text">Armsway · Confidential</span>
+  <span class="topbar-badge">Restricted access</span>
+</div>
 
-  <main>
-    <p class="eyebrow">Patented technology</p>
-    <h1 class="headline">
-      Built for<br>
-      <span>what's next.</span>
-    </h1>
-    <p class="subline">
-      Armsway is a purpose-built product under selective access. If you received an invitation or have a specific inquiry, use the form below.
-    </p>
+<header>
+  <div class="logo">
+    <div class="logo-mark">
+      <!-- Medical cross / shield mark -->
+      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <rect x="8" y="2" width="4" height="16" rx="1"/>
+        <rect x="2" y="8" width="16" height="4" rx="1"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-name">Armsway</div>
+      <div class="logo-tagline">Patented medical technology</div>
+    </div>
+  </div>
+  <div class="header-right">Referral only</div>
+</header>
 
-    <div class="intake">
-      <p class="intake-title">Request access or inquire</p>
-      <form class="intake-form" id="intakeForm" method="POST" action="/api/contact">
-        <div class="intake-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
-        </div>
-        <div class="intake-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email" />
-        </div>
-        <div class="intake-field">
-          <label for="org">Organization</label>
-          <input type="text" id="org" name="company" placeholder="Optional" />
-        </div>
-        <div class="intake-field">
-          <label for="message">Context</label>
-          <textarea id="message" name="message" required placeholder="Brief context for your inquiry"></textarea>
-        </div>
-        <input type="hidden" name="subject" value="armsway-inquiry" />
-        <button type="submit" class="intake-submit" id="intakeSubmit">Submit inquiry &rarr;</button>
-        <p class="intake-notice" id="intakeNotice" aria-live="polite"></p>
-      </form>
+<div style="background:white;border-bottom:1px solid var(--rule)">
+  <div class="hero">
+    <div>
+      <p class="hero-kicker">US Patent · Selective access</p>
+      <h1 class="hero-title">
+        Precision-built.<br>
+        <strong>Clinically designed.</strong><br>
+        By referral only.
+      </h1>
+      <p class="hero-desc">
+        Armsway is a patented medical technology product. Access is restricted to qualified individuals and institutions. Submit an intake request below to initiate the review process.
+      </p>
+    </div>
+    <div class="hero-meta">
+      <div class="meta-row">
+        <span class="meta-key">Patent status</span>
+        <span class="meta-val active">Active — US jurisdiction</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Access model</span>
+        <span class="meta-val restricted">Referral / Selective</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Classification</span>
+        <span class="meta-val">Medical technology</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Parent company</span>
+        <span class="meta-val">Gold Shore Labs</span>
+      </div>
+      <div class="meta-row">
+        <span class="meta-key">Inquiries</span>
+        <span class="meta-val">rob@armsway.com</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="intake-section" id="intake">
+  <div class="intake-inner">
+    <div>
+      <p class="intake-label">Patient / Practitioner intake</p>
+      <h2 class="intake-title">Request access or<br>submit an inquiry.</h2>
+      <p class="intake-desc">
+        All submissions are reviewed manually. Only qualified referrals will receive a response. Completing this form does not constitute an agreement or guarantee of access.
+      </p>
     </div>
 
-    <div class="specs">
-      <div class="spec">
-        <div class="spec-value">US</div>
-        <div class="spec-key">Patent jurisdiction</div>
+    <form class="intake-form" id="intakeForm" method="POST" action="/api/contact" novalidate>
+      <div class="hp-field" aria-hidden="true">
+        <input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" />
       </div>
-      <div class="spec">
-        <div class="spec-value">&#x25CB;</div>
-        <div class="spec-key">Selective access</div>
+      <input type="hidden" name="formStartedAt" id="formStartedAt" />
+      <input type="hidden" name="formType" value="armsway-inquiry" />
+      <input type="hidden" name="dedupeKey" id="dedupeKey" />
+
+      <div class="irow">
+        <div class="ifield">
+          <label>Full name *</label>
+          <input type="text" name="name" required minlength="2" autocomplete="name" />
+        </div>
+        <div class="ifield">
+          <label>Professional email *</label>
+          <input type="email" name="email" required autocomplete="email" />
+        </div>
       </div>
-      <div class="spec">
-        <div class="spec-value">GSL</div>
-        <div class="spec-key">Gold Shore Labs</div>
+      <div class="irow">
+        <div class="ifield">
+          <label>Institution / Organization</label>
+          <input type="text" name="company" autocomplete="organization" />
+        </div>
+        <div class="ifield">
+          <label>Role / Specialty</label>
+          <input type="text" name="role" />
+        </div>
       </div>
-    </div>
-  </main>
+      <div class="ifield">
+        <label>Basis for inquiry *</label>
+        <select name="inquiry" required>
+          <option value="" disabled selected>Select</option>
+          <option value="strategy-call">Clinical evaluation</option>
+          <option value="project-scope">Institutional partnership</option>
+          <option value="general">Research inquiry</option>
+          <option value="support">Referred by associate</option>
+        </select>
+      </div>
+      <div class="ifield">
+        <label>Context / Message *</label>
+        <textarea name="message" required minlength="20" placeholder="Describe your role, institution, and the nature of your inquiry."></textarea>
+      </div>
+      <button type="submit" class="intake-submit" id="submitBtn">Submit intake request →</button>
+      <p class="intake-notice" id="formNotice" aria-live="polite"></p>
+      <p class="intake-disclaimer">
+        This form is encrypted and transmitted securely. Information is reviewed by authorized personnel only.
+        Submission does not guarantee access or create any contractual obligation.
+      </p>
+    </form>
+  </div>
+</div>
 
-  <footer>
-    <p class="footer-copy">&copy; 2025 Armsway / Gold Shore Labs. All rights reserved.</p>
-    <ul class="footer-legal">
-      <li><a href="mailto:rob@armsway.com">Contact</a></li>
-      <li><a href="https://goldshore.ai" target="_blank" rel="noopener">Gold Shore Labs</a></li>
-    </ul>
-  </footer>
+<footer>
+  <p class="footer-copy">&copy; 2025 Armsway · Gold Shore Labs · All rights reserved · Patent protected</p>
+  <ul class="footer-links">
+    <li><a href="mailto:rob@armsway.com">Contact</a></li>
+    <li><a href="https://goldshore.ai" target="_blank" rel="noopener">Gold Shore Labs</a></li>
+  </ul>
+</footer>
 
-  <script>
-    const form = document.getElementById('intakeForm');
-    const notice = document.getElementById('intakeNotice');
-    const btn = document.getElementById('intakeSubmit');
+<script>
+  document.getElementById('formStartedAt').value = Date.now();
+  document.getElementById('dedupeKey').value = crypto.randomUUID().replace(/-/g,'') + crypto.randomUUID().replace(/-/g,'');
 
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      notice.textContent = '';
-
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          body: new FormData(form),
-        });
-        if (res.ok) {
-          notice.textContent = 'Received. You will hear from us if there is a fit.';
-          notice.style.color = '#7fffd4';
-          form.reset();
-        } else {
-          throw new Error();
-        }
-      } catch {
-        notice.textContent = 'Submission failed. Email rob@armsway.com directly.';
-        notice.style.color = '#ff4444';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Submit inquiry →';
+  document.getElementById('intakeForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const notice = document.getElementById('formNotice');
+    btn.disabled = true;
+    btn.textContent = 'Submitting…';
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'x-gs-request-mode': 'spa', 'accept': 'application/json' },
+        body: new FormData(e.target),
+      });
+      const data = await res.json();
+      if (data.ok) {
+        notice.textContent = 'Intake received. You will be contacted if your request qualifies.';
+        notice.style.color = 'var(--medical-teal)';
+        e.target.reset();
+        document.getElementById('formStartedAt').value = Date.now();
+        document.getElementById('dedupeKey').value = crypto.randomUUID().replace(/-/g,'') + crypto.randomUUID().replace(/-/g,'');
+      } else {
+        notice.textContent = data.error?.message || 'Submission failed. Email rob@armsway.com directly.';
+        notice.style.color = 'var(--medical-red)';
       }
-    });
-  </script>
+    } catch {
+      notice.textContent = 'Network error. Email rob@armsway.com directly.';
+      notice.style.color = 'var(--medical-red)';
+    } finally {
+      btn.disabled = false;
+      btn.textContent = 'Submit intake request →';
+    }
+  });
+</script>
 
 </body>
 </html>
