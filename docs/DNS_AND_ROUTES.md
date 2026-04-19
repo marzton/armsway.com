@@ -1,6 +1,6 @@
 # Gold Shore Labs — DNS & Worker Route Configuration
 # Apply in Cloudflare Dashboard: dash.cloudflare.com → DNS
-# Account: f77de112d2019e5456a3198a8bb50bd2
+# Account: <account_id>
 
 # ══════════════════════════════════════════════════════════════
 # ZONE: goldshore.ai
