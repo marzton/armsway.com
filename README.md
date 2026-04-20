@@ -1,108 +1,51 @@
-# armsway.com - Public Website (B2B Medical Sleeve)
+# armsway.com — Cloudflare Worker Static Site
 
-The public B2B website for ArmsWay™ — a patented medical product designed to block 99.9% of contaminants on reusable blood pressure cuffs.
+Production site for ArmsWay™ (medical BP cuff sleeve), deployed on Cloudflare Workers with static assets.
 
-## ✅ Site Features
-- Responsive HTML/CSS landing page
-- Clean B2B language for hospitals/clinics
-- Logo and color scheme applied
-- Inquiry/contact form placeholder (to connect with Flask backend)
-- Favicon and brand asset integration
-- Secure inquiry form connected to backend Flask API
-- Downloadable product PDFs and spec sheets
-- Legal/IP policy footer links
-- Responsive, clean medical layout
+## What this repository now includes
 
-## 🧠 Instructions
-To serve this publicly:
-1. Push all contents to `goldshore/armsway.com`
-2. Verify custom domain `armsway.com` via GitHub Pages
-3. Enable HTTPS via Cloudflare
+- Responsive landing page (`index.html` + `style.css`).
+- Shared SVG brand assets and UI icons in `assets/`.
+- `dist/` build-ready static bundle for Cloudflare asset delivery.
+- Worker config (`wrangler.jsonc`) routing both `armsway.com/*` and `www.armsway.com/*`.
 
-Fields:
-- name, email, company, message  
-Optional integration via:
-- 📬 Mailgun
-- 💬 Discord webhook
-- 📊 CRM backend (Flask app)
+## Local preview
 
-—
+```bash
+python3 -m http.server 8000
+```
 
-## 🚀 Deployment (Live Production)
+Then open:
 
-- Hosted via **GitHub Pages** with automated deploys from `main`
-- Workflow: `.github/workflows/deploy-pages.yml`
-- Static only, no build step (`.nojekyll` is included)
+- `http://localhost:8000/index.html`
+- `http://localhost:8000/dist/index.html`
 
-### Production go-live checklist
+## Cloudflare deployment
 
-1. In GitHub repo settings, set **Pages → Source** to **GitHub Actions**.
-2. Confirm `CNAME` contains `armsway.com`.
-3. In Cloudflare DNS, point apex and `www` to GitHub Pages records.
-4. In Cloudflare SSL/TLS, use **Full (strict)** and enable **Always Use HTTPS**.
-5. Push to `main` and verify a successful **Deploy static site to GitHub Pages** run.
-6. Verify both `https://armsway.com` and `https://www.armsway.com` resolve to the live site.
+1. Authenticate wrangler:
 
-—
+```bash
+npx wrangler login
+```
 
-## 📌 DNS Configuration (Cloudflare)
+2. Deploy worker assets:
 
-Set the following `A` or `CNAME` records:
+```bash
+npx wrangler deploy
+```
 
-| Type | Name         | Value                              |
-|------|--------------|-------------------------------------|
-| A    | @            | `185.199.108.153` *(GitHub Pages)* |
-| CNAME| www          | `armsway.com`                      |
-| TXT  | _github-pages| `https://armsway.com`              |
+3. In Cloudflare dashboard, confirm Worker routes:
+   - `armsway.com/*`
+   - `www.armsway.com/*`
 
-—
+4. Ensure DNS in `armsway.com` zone:
+   - `@` proxied record for Worker/custom domain
+   - `www` proxied CNAME to `armsway.com`
 
-## 📈 Meta & SEO (Coming Soon)
+## Inquiry form target
 
-- Meta tags: description, keywords, OpenGraph  
-- Twitter Card preview
-- Schema.org markup (Product + MedicalDevice)
+The quote form submits to:
 
-—
+`https://armsway.com-private.goldshore.workers.dev/inquiry`
 
-## 📌 Legal
-
-- Includes: USPTO patent badge and legal notice
-- Email opt-in fields must comply with CAN-SPAM
-- Privacy and Terms pages required for any ad network (Google Ads)
-
-—
-
-## ✅ TODO
-
-- [x] Static homepage
-- [x] Assets, logo, PDF downloads
-- [x] Inquiry endpoint
-- [ ] Privacy/legal pages
-- [ ] SEO + analytics
-- [ ] Email blast opt-in
-- [ ] Hospital outreach search page
-
-—
-
-## 📜 License
-
-MIT License — See `LICENSE`  
-© 2025 ArmsWay™  
-[info@armsway.com](mailto:info@armsway.com)  
-[7072 Hope Hill Rd, Brooksville, FL 34601](https://maps.google.com/?q=7072+Hope+Hill+Rd,+Brooksville,+FL)
-
-🧪 Local Dev Setup
-Use Live Server or any static server to preview:
-
-> Backend is managed at [armsway.com-private](https://github.com/goldshore/armsway.com-private)
-
-### Future Plans:
-- Integrate contact form into backend (secure Flask API)
-- Auto-pull USPTO data for patents
-- Embed testimonials or case study PDF
-- Add search tool for medical buyers
-- Compliance and Legal Policy section
-
----
-**Maintained by [Gold Shore Labs](https://goldshore.foundation)**
+If you change intake infrastructure, update the `<form action="...">` in both `index.html` and `dist/index.html`.
