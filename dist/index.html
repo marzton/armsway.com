@@ -1,228 +1,326 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Armsway — by referral only." />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Armsway</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;1,300&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Armsway — patented medical technology. Precision-engineered. Clinically validated."/>
+  <meta name="robots" content="index, follow"/>
+  <title>Armsway — Precision Medical Technology</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet"/>
+
   <style>
     :root {
-      --clinical-white: #f8fafc;
-      --clinical-off:   #eef2f7;
-      --rule:           #dce4ef;
-      --ink:            #0f1923;
-      --ink-mid:        #1e2d3d;
-      --ink-soft:       #2d3f52;
-      --muted:          #64788f;
-      --faint:          #94a9be;
-      --medical-blue:   #1a4fa0;
-      --medical-teal:   #0d7377;
-      --medical-teal-pale: rgba(13,115,119,0.08);
-      --medical-red:    #b91c1c;
-      --sans:           'IBM Plex Sans', system-ui, sans-serif;
-      --mono:           'IBM Plex Mono', monospace;
+      --white:       #fafaf8;
+      --off:         #f2f0ec;
+      --rule:        #e4e0d8;
+      --rule-dark:   #c8c4bc;
+      --ink:         #1a1814;
+      --ink-mid:     #2e2b26;
+      --muted:       #6b6560;
+      --faint:       #9e9892;
+      --clinical:    #1d4e6b;    /* deep teal-navy — medical authority */
+      --clinical-lt: #2a6f96;
+      --clinical-pale: rgba(29,78,107,0.06);
+      --gold:        #8b6914;    /* warm antique gold — GSL brand connection */
+      --gold-pale:   rgba(139,105,20,0.08);
+      --serif:       'Cormorant Garamond', Georgia, serif;
+      --mono:        'DM Mono', monospace;
+      --sans:        'DM Sans', system-ui, sans-serif;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; }
+    html { font-size: 16px; scroll-behavior: smooth; }
 
     body {
       font-family: var(--sans);
-      background: var(--clinical-white);
+      background: var(--white);
       color: var(--ink);
-      min-height: 100vh;
       -webkit-font-smoothing: antialiased;
-    }
-
-    /* ── TOP BAR ── */
-    .topbar {
-      background: var(--medical-blue);
-      padding: 0.5rem 3rem;
+      min-height: 100vh;
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .topbar-text {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-    }
-
-    .topbar-badge {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 0.2rem 0.6rem;
+      flex-direction: column;
     }
 
     /* ── HEADER ── */
     header {
-      background: white;
-      border-bottom: 2px solid var(--medical-blue);
+      background: var(--white);
+      border-bottom: 1px solid var(--rule);
       padding: 1.5rem 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
     .logo {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
+    /* Medical cross — SVG mark */
     .logo-mark {
-      width: 36px;
-      height: 36px;
-      background: var(--medical-blue);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 34px;
+      height: 34px;
       flex-shrink: 0;
     }
 
-    .logo-mark svg { width: 20px; height: 20px; fill: white; }
-
-    .logo-name {
-      font-family: var(--sans);
-      font-size: 1.1rem;
-      font-weight: 500;
+    .logo-text {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
       color: var(--ink);
-      letter-spacing: 0.04em;
     }
 
-    .logo-tagline {
+    .logo-sub {
       font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.12em;
+      font-size: 0.52rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--muted);
-      margin-top: 0.15rem;
+      margin-top: 0.1rem;
     }
 
-    .header-right {
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    nav a {
       font-family: var(--mono);
       font-size: 0.62rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--medical-blue);
-      border: 1px solid var(--medical-blue);
-      padding: 0.4rem 1rem;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 200ms;
     }
+
+    nav a:hover { color: var(--clinical); }
+
+    .nav-cta {
+      background: var(--clinical) !important;
+      color: white !important;
+      padding: 0.5rem 1.25rem !important;
+      transition: background 200ms !important;
+    }
+
+    .nav-cta:hover { background: var(--clinical-lt) !important; }
 
     /* ── HERO ── */
     .hero {
-      background: var(--clinical-off);
-      border-bottom: 1px solid var(--rule);
-      padding: 5rem 3rem;
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 5rem;
-      max-width: 1200px;
+      flex: 0;
+      padding: 6rem 3rem 5rem;
+      max-width: 1240px;
       margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1px 420px;
+      gap: 0;
+      border-bottom: 1px solid var(--rule);
     }
 
-    .hero-kicker {
+    .hero-left { padding-right: 5rem; }
+
+    .hero-eyebrow {
       font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.16em;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--medical-teal);
-      margin-bottom: 1.25rem;
+      color: var(--clinical);
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
 
-    .hero-kicker::before {
+    .hero-eyebrow::before {
       content: '';
       display: block;
-      width: 24px;
+      width: 28px;
       height: 1px;
-      background: var(--medical-teal);
+      background: var(--clinical);
     }
 
     .hero-title {
-      font-size: clamp(2.4rem, 4vw, 3.8rem);
+      font-family: var(--serif);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
       font-weight: 300;
-      line-height: 1.15;
+      line-height: 1.08;
+      letter-spacing: -0.01em;
       color: var(--ink);
-      margin-bottom: 1.25rem;
-      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
     }
 
-    .hero-title strong {
-      font-weight: 500;
-      color: var(--medical-blue);
+    .hero-title em {
+      font-style: italic;
+      color: var(--clinical);
     }
 
-    .hero-desc {
-      font-size: 0.98rem;
+    .hero-deck {
+      font-family: var(--serif);
+      font-size: 1.25rem;
       font-weight: 300;
+      line-height: 1.65;
       color: var(--muted);
-      line-height: 1.8;
-      max-width: 48ch;
-      margin-bottom: 2rem;
-      border-left: 3px solid var(--rule);
-      padding-left: 1.25rem;
+      max-width: 42ch;
+      margin-bottom: 2.5rem;
+      font-style: italic;
     }
 
-    .hero-meta {
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--clinical);
+      color: white;
+      border: 1px solid var(--clinical);
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: all 200ms;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: var(--clinical-lt); border-color: var(--clinical-lt); }
+
+    .btn-ghost {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: transparent;
+      color: var(--clinical);
+      border: 1px solid var(--rule-dark);
+      padding: 0.9rem 2rem;
+      text-decoration: none;
+      transition: all 200ms;
+    }
+
+    .btn-ghost:hover { border-color: var(--clinical); background: var(--clinical-pale); }
+
+    /* Hero divider */
+    .hero-divider { background: var(--rule); width: 1px; }
+
+    /* Hero right — product attributes */
+    .hero-right { padding-left: 3rem; display: flex; flex-direction: column; gap: 0; }
+
+    .attr-row {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
       display: flex;
       flex-direction: column;
-      gap: 0;
-      background: white;
-      border: 1px solid var(--rule);
+      gap: 0.3rem;
     }
 
-    .meta-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.9rem 1.25rem;
-      border-bottom: 1px solid var(--rule);
-    }
+    .attr-row:last-child { border-bottom: none; }
 
-    .meta-row:last-child { border-bottom: none; }
-
-    .meta-key {
+    .attr-label {
       font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.1em;
+      font-size: 0.55rem;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: var(--faint);
     }
 
-    .meta-val {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--ink);
+    .attr-value {
+      font-family: var(--serif);
+      font-size: 1.05rem;
       font-weight: 400;
+      color: var(--ink);
     }
 
-    .meta-val.active { color: var(--medical-teal); }
-    .meta-val.restricted { color: var(--medical-blue); }
+    /* ── FEATURES ── */
+    .features {
+      padding: 5rem 3rem;
+      max-width: 1240px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--clinical);
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      max-width: 80px;
+      height: 1px;
+      background: var(--rule-dark);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background 200ms;
+    }
+
+    .feature-card:hover { background: var(--off); }
+
+    .feature-num {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      color: var(--clinical);
+      margin-bottom: 1rem;
+    }
+
+    .feature-title {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+    }
+
+    .feature-desc {
+      font-size: 0.85rem;
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.7;
+    }
 
     /* ── INTAKE FORM ── */
-    .intake-section {
-      background: white;
-      border-top: 1px solid var(--rule);
-      border-bottom: 1px solid var(--rule);
-      padding: 4rem 3rem;
+    #intake {
+      background: var(--ink);
+      color: white;
+      padding: 5rem 3rem;
     }
 
     .intake-inner {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 560px;
@@ -230,287 +328,412 @@
       align-items: start;
     }
 
-    .intake-label {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--medical-teal);
-      margin-bottom: 1rem;
-    }
-
     .intake-title {
-      font-size: 1.8rem;
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
       font-weight: 300;
-      color: var(--ink);
-      line-height: 1.3;
+      line-height: 1.2;
       margin-bottom: 1rem;
-      letter-spacing: -0.01em;
+      color: white;
     }
 
     .intake-desc {
       font-size: 0.9rem;
       font-weight: 300;
-      color: var(--muted);
+      color: rgba(255,255,255,0.5);
       line-height: 1.75;
-      max-width: 40ch;
+      max-width: 38ch;
+      margin-bottom: 2rem;
     }
 
+    .contact-links { display: flex; flex-direction: column; gap: 0; }
+
+    .contact-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .contact-row:last-child { border-bottom: none; }
+
+    .contact-key {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .contact-val {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .contact-val:hover { color: white; }
+
+    /* Form */
     .intake-form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      background: var(--clinical-off);
-      border: 1px solid var(--rule);
-      padding: 2rem;
-      position: relative;
+      gap: 0.9rem;
     }
 
-    .intake-form::before {
-      content: 'INTAKE FORM — CONFIDENTIAL';
-      display: block;
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+
+    .field label {
       font-family: var(--mono);
       font-size: 0.55rem;
-      letter-spacing: 0.16em;
-      color: var(--faint);
-      margin-bottom: 0.5rem;
-    }
-
-    .ifield {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .ifield label {
-      font-family: var(--mono);
-      font-size: 0.58rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--muted);
+      color: rgba(255,255,255,0.35);
     }
 
-    .ifield input,
-    .ifield textarea,
-    .ifield select {
-      background: white;
-      border: 1px solid var(--rule);
-      border-top: 2px solid var(--rule);
-      color: var(--ink);
+    .field input,
+    .field textarea,
+    .field select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-top: 2px solid rgba(255,255,255,0.1);
+      color: white;
       font-family: var(--sans);
       font-size: 0.88rem;
-      padding: 0.7rem 0.9rem;
+      padding: 0.75rem 0.9rem;
       outline: none;
-      transition: border-color 150ms, border-top-color 150ms;
+      transition: border-color 200ms, border-top-color 200ms;
       -webkit-appearance: none;
       width: 100%;
     }
 
-    .ifield input:focus,
-    .ifield textarea:focus,
-    .ifield select:focus {
-      border-top-color: var(--medical-blue);
-      border-color: rgba(26,79,160,0.3);
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-top-color: var(--clinical-lt);
+      border-color: rgba(42,111,150,0.4);
     }
 
-    .ifield textarea { min-height: 90px; resize: vertical; }
-    .ifield select option { background: white; }
+    .field input::placeholder,
+    .field textarea::placeholder { color: rgba(255,255,255,0.18); }
 
-    .irow { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .field textarea { min-height: 100px; resize: vertical; }
+    .field select option { background: var(--ink-mid); }
 
     .hp-field { display: none !important; }
 
-    .intake-submit {
-      background: var(--medical-blue);
-      color: white;
-      border: none;
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.85rem 2rem;
-      cursor: pointer;
-      transition: background 150ms;
-      width: 100%;
-      margin-top: 0.25rem;
+    .form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 0.25rem;
     }
 
-    .intake-submit:hover { background: var(--ink-mid); }
-    .intake-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+    .btn-submit {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: white;
+      color: var(--ink);
+      border: none;
+      padding: 0.85rem 2.5rem;
+      cursor: pointer;
+      transition: all 200ms;
+    }
 
-    .intake-notice {
+    .btn-submit:hover { background: var(--off); }
+    .btn-submit:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .form-notice {
       font-family: var(--mono);
       font-size: 0.6rem;
       letter-spacing: 0.06em;
-      text-align: center;
       min-height: 1.2em;
-    }
-
-    .intake-disclaimer {
-      font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.06em;
-      color: var(--faint);
-      text-align: center;
-      line-height: 1.6;
-      border-top: 1px solid var(--rule);
-      padding-top: 0.75rem;
-      margin-top: 0.25rem;
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--ink);
+      background: var(--ink-mid);
       color: white;
-      padding: 1.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 2.5rem 3rem;
+      margin-top: auto;
     }
 
-    .footer-copy {
+    .footer-inner {
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-bottom: 1.5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-brand {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 300;
+      color: white;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-brand-sub {
       font-family: var(--mono);
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
+      font-size: 0.52rem;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.3);
+      margin-top: 0.2rem;
     }
 
     .footer-links {
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .footer-links a {
       font-family: var(--mono);
+      font-size: 0.58rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+
+    .footer-links a:hover { color: rgba(255,255,255,0.7); }
+
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-copy {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.2);
+    }
+
+    /* Powered by Gold Shore Labs */
+    .powered-by {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .powered-label {
+      font-family: var(--mono);
+      font-size: 0.52rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.2);
+    }
+
+    .powered-mark {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: opacity 200ms;
+    }
+
+    .powered-by:hover .powered-mark { opacity: 0.7; }
+
+    .gsl-diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .powered-name {
+      font-family: var(--mono);
       font-size: 0.55rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.25);
-      text-decoration: none;
-      transition: color 150ms;
+      color: var(--gold);
+      opacity: 0.7;
     }
-
-    .footer-links a:hover { color: rgba(255,255,255,0.6); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1024px) {
-      .hero { grid-template-columns: 1fr; gap: 2.5rem; }
-      .intake-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .hero { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-divider { display: none; }
+      .hero-right { padding-left: 0; border-top: 1px solid var(--rule); padding-top: 2rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .intake-inner { grid-template-columns: 1fr; gap: 3rem; }
     }
 
     @media (max-width: 640px) {
-      .topbar, header, .hero, .intake-section, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-      .hero { padding-top: 3rem; padding-bottom: 3rem; }
-      .irow { grid-template-columns: 1fr; }
-      .intake-form { padding: 1.5rem; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
+      header, .hero, .features, #intake, footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding-top: 3.5rem; padding-bottom: 3rem; }
+      .features-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .footer-top { flex-direction: column; }
+      .footer-bottom { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="topbar">
-  <span class="topbar-text">Armsway · Confidential</span>
-  <span class="topbar-badge">Restricted access</span>
-</div>
-
 <header>
   <div class="logo">
-    <div class="logo-mark">
-      <!-- Medical cross / shield mark -->
-      <svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-        <rect x="8" y="2" width="4" height="16" rx="1"/>
-        <rect x="2" y="8" width="16" height="4" rx="1"/>
-      </svg>
-    </div>
+    <svg class="logo-mark" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="14" y="2" width="6" height="30" rx="2" fill="#1d4e6b"/>
+      <rect x="2" y="14" width="30" height="6" rx="2" fill="#1d4e6b"/>
+    </svg>
     <div>
-      <div class="logo-name">Armsway</div>
-      <div class="logo-tagline">Patented medical technology</div>
+      <div class="logo-text">Armsway</div>
+      <div class="logo-sub">Precision Medical Technology</div>
     </div>
   </div>
-  <div class="header-right">Referral only</div>
+  <nav>
+    <a href="#technology">Technology</a>
+    <a href="#intake" class="nav-cta">Request Access</a>
+  </nav>
 </header>
 
-<div style="background:white;border-bottom:1px solid var(--rule)">
-  <div class="hero">
-    <div>
-      <p class="hero-kicker">US Patent · Selective access</p>
-      <h1 class="hero-title">
-        Precision-built.<br>
-        <strong>Clinically designed.</strong><br>
-        By referral only.
-      </h1>
-      <p class="hero-desc">
-        Armsway is a patented medical technology product. Access is restricted to qualified individuals and institutions. Submit an intake request below to initiate the review process.
-      </p>
-    </div>
-    <div class="hero-meta">
-      <div class="meta-row">
-        <span class="meta-key">Patent status</span>
-        <span class="meta-val active">Active — US jurisdiction</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-key">Access model</span>
-        <span class="meta-val restricted">Referral / Selective</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-key">Classification</span>
-        <span class="meta-val">Medical technology</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-key">Parent company</span>
-        <span class="meta-val">Gold Shore Labs</span>
-      </div>
-      <div class="meta-row">
-        <span class="meta-key">Inquiries</span>
-        <span class="meta-val">rob@armsway.com</span>
-      </div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">US Patent · Medical Technology</p>
+    <h1 class="hero-title">
+      Built for the<br>
+      <em>human form.</em>
+    </h1>
+    <p class="hero-deck">
+      A patented medical technology engineered with clinical precision. Designed for practitioners and institutions who require more from their tools.
+    </p>
+    <div class="hero-actions">
+      <a href="#intake" class="btn-primary">Request access →</a>
+      <a href="mailto:rob@armsway.com" class="btn-ghost">Contact directly</a>
     </div>
   </div>
-</div>
 
-<div class="intake-section" id="intake">
+  <div class="hero-divider"></div>
+
+  <div class="hero-right">
+    <div class="attr-row">
+      <span class="attr-label">Classification</span>
+      <span class="attr-value">Patented medical product</span>
+    </div>
+    <div class="attr-row">
+      <span class="attr-label">Patent status</span>
+      <span class="attr-value">Active — US jurisdiction</span>
+    </div>
+    <div class="attr-row">
+      <span class="attr-label">Access model</span>
+      <span class="attr-value">Selective — qualified referral</span>
+    </div>
+    <div class="attr-row">
+      <span class="attr-label">Owner</span>
+      <span class="attr-value">Rob Marston · Gold Shore Labs</span>
+    </div>
+    <div class="attr-row">
+      <span class="attr-label">Direct inquiries</span>
+      <span class="attr-value">rob@armsway.com</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="technology">
+  <p class="section-label">Product characteristics</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <p class="feature-num">01</p>
+      <h3 class="feature-title">Patented design</h3>
+      <p class="feature-desc">Protected intellectual property developed through rigorous clinical research and engineering validation. US patent active.</p>
+    </div>
+    <div class="feature-card">
+      <p class="feature-num">02</p>
+      <h3 class="feature-title">Clinical precision</h3>
+      <p class="feature-desc">Engineered for the specific demands of medical practice. Every dimension, material, and mechanism chosen for performance under clinical conditions.</p>
+    </div>
+    <div class="feature-card">
+      <p class="feature-num">03</p>
+      <h3 class="feature-title">Selective access</h3>
+      <p class="feature-desc">Available to qualified practitioners and institutions. Each inquiry is reviewed individually. Access is earned, not assumed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INTAKE -->
+<section id="intake">
   <div class="intake-inner">
     <div>
-      <p class="intake-label">Patient / Practitioner intake</p>
-      <h2 class="intake-title">Request access or<br>submit an inquiry.</h2>
+      <p class="section-label" style="color:rgba(255,255,255,0.4)">Access request</p>
+      <h2 class="intake-title">Qualified<br>practitioners only.</h2>
       <p class="intake-desc">
-        All submissions are reviewed manually. Only qualified referrals will receive a response. Completing this form does not constitute an agreement or guarantee of access.
+        Submit your details below. All requests are reviewed manually. Completing this form does not guarantee access or create any contractual obligation.
       </p>
+      <div class="contact-links">
+        <div class="contact-row">
+          <span class="contact-key">Direct</span>
+          <a href="mailto:rob@armsway.com" class="contact-val">rob@armsway.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Parent company</span>
+          <a href="https://goldshore.ai" class="contact-val" target="_blank" rel="noopener">goldshore.ai</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-key">Confidentiality</span>
+          <span class="contact-val">All submissions encrypted</span>
+        </div>
+      </div>
     </div>
 
     <form class="intake-form" id="intakeForm" method="POST" action="/api/contact" novalidate>
       <div class="hp-field" aria-hidden="true">
-        <input type="text" name="companyWebsite" tabindex="-1" autocomplete="off" />
+        <input type="text" name="companyWebsite" tabindex="-1" autocomplete="off"/>
       </div>
-      <input type="hidden" name="formStartedAt" id="formStartedAt" />
-      <input type="hidden" name="formType" value="armsway-inquiry" />
-      <input type="hidden" name="dedupeKey" id="dedupeKey" />
+      <input type="hidden" name="formStartedAt" id="formStartedAt"/>
+      <input type="hidden" name="formType" value="armsway-inquiry"/>
+      <input type="hidden" name="dedupeKey" id="dedupeKey"/>
 
-      <div class="irow">
-        <div class="ifield">
+      <div class="form-row">
+        <div class="field">
           <label>Full name *</label>
-          <input type="text" name="name" required minlength="2" autocomplete="name" />
+          <input type="text" name="name" required minlength="2" placeholder="Dr. Jane Smith"/>
         </div>
-        <div class="ifield">
+        <div class="field">
           <label>Professional email *</label>
-          <input type="email" name="email" required autocomplete="email" />
+          <input type="email" name="email" required placeholder="you@institution.org"/>
         </div>
       </div>
-      <div class="irow">
-        <div class="ifield">
-          <label>Institution / Organization</label>
-          <input type="text" name="company" autocomplete="organization" />
+      <div class="form-row">
+        <div class="field">
+          <label>Institution</label>
+          <input type="text" name="company" placeholder="Hospital, clinic, practice"/>
         </div>
-        <div class="ifield">
-          <label>Role / Specialty</label>
-          <input type="text" name="role" />
+        <div class="field">
+          <label>Role / specialty</label>
+          <input type="text" name="role" placeholder="Orthopedic surgeon, etc."/>
         </div>
       </div>
-      <div class="ifield">
-        <label>Basis for inquiry *</label>
+      <div class="field">
+        <label>Nature of inquiry *</label>
         <select name="inquiry" required>
           <option value="" disabled selected>Select</option>
           <option value="strategy-call">Clinical evaluation</option>
@@ -519,26 +742,40 @@
           <option value="support">Referred by associate</option>
         </select>
       </div>
-      <div class="ifield">
-        <label>Context / Message *</label>
-        <textarea name="message" required minlength="20" placeholder="Describe your role, institution, and the nature of your inquiry."></textarea>
+      <div class="field">
+        <label>Context *</label>
+        <textarea name="message" required minlength="20" placeholder="Describe your role, institution, and what prompted your inquiry."></textarea>
       </div>
-      <button type="submit" class="intake-submit" id="submitBtn">Submit intake request →</button>
-      <p class="intake-notice" id="formNotice" aria-live="polite"></p>
-      <p class="intake-disclaimer">
-        This form is encrypted and transmitted securely. Information is reviewed by authorized personnel only.
-        Submission does not guarantee access or create any contractual obligation.
-      </p>
+      <div class="form-footer">
+        <button type="submit" class="btn-submit" id="submitBtn">Submit request →</button>
+        <p class="form-notice" id="formNotice" aria-live="polite"></p>
+      </div>
     </form>
   </div>
-</div>
+</section>
 
+<!-- FOOTER -->
 <footer>
-  <p class="footer-copy">&copy; 2025 Armsway · Gold Shore Labs · All rights reserved · Patent protected</p>
-  <ul class="footer-links">
-    <li><a href="mailto:rob@armsway.com">Contact</a></li>
-    <li><a href="https://goldshore.ai" target="_blank" rel="noopener">Gold Shore Labs</a></li>
-  </ul>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">Armsway</div>
+        <div class="footer-brand-sub">Precision Medical Technology · Patent protected</div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="#technology">Technology</a></li>
+        <li><a href="#intake">Access</a></li>
+        <li><a href="mailto:rob@armsway.com">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Armsway · Gold Shore Labs · All rights reserved · US Patent protected</p>
+      <a href="https://goldshore.ai" class="powered-by" target="_blank" rel="noopener" title="Gold Shore Labs">
+        <span class="powered-label">Powered by</span>
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDAgNDAwIiB3aWR0aD0iMTEwIiBoZWlnaHQ9IjEwMCI+CiAgPGRlZnM+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdMIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzJkNWVhOCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMxYTNjN2EiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImdSIiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxYTNjN2EiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGQyMjQ3Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJnQiIgeDE9IjUwJSIgeTE9IjAlIiB4Mj0iNTAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxZTRhOGMiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMGYyYTU1Ii8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPGZpbHRlciBpZD0ic2hhZG93IiB4PSItMTAlIiB5PSItMTAlIiB3aWR0aD0iMTIwJSIgaGVpZ2h0PSIxMzAlIj4KICAgICAgPGZlRHJvcFNoYWRvdyBkeD0iNCIgZHk9IjYiIHN0ZERldmlhdGlvbj0iNiIgZmxvb2QtY29sb3I9IiMwMDAwMDA0NCIvPgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgoKICA8ZyBmaWx0ZXI9InVybCgjc2hhZG93KSI+CiAgICA8IS0tIExFRlQgRkFDRTogdG9wLWxlZnQgZWRnZSBnb2luZyBkb3duLWxlZnQgKEdPTEQpIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSIyMjAsMjAgNTAsMzMwIDExMCwzMzAgMTYwLDI0MCAxNjAsMTQwIDIyMCwyMCIKICAgICAgICAgICAgIGZpbGw9InVybCgjZ0wpIi8+CgogICAgPCEtLSBSSUdIVCBGQUNFOiB0b3AtcmlnaHQgZWRnZSBnb2luZyBkb3duLXJpZ2h0IChTSE9SRSkgLS0+ICAKICAgIDxwb2x5Z29uIHBvaW50cz0iMjIwLDIwIDI4MCwxNDAgMjgwLDI0MCAzMzAsMzMwIDM5MCwzMzAgMjIwLDIwIgogICAgICAgICAgICAgZmlsbD0idXJsKCNnUikiLz4KCiAgICA8IS0tIEJPVFRPTSBGQUNFOiBmdWxsIGJvdHRvbSBiYXIgKExBQlMpIC0tPgogICAgPHBvbHlnb24gcG9pbnRzPSI1MCwzMzAgMTEwLDMzMCAxMTAsMzEwIDMzMCwzMTAgMzMwLDMzMCAzOTAsMzMwIDM5MCwzNjAgNTAsMzYwIgogICAgICAgICAgICAgZmlsbD0idXJsKCNnQikiLz4KCiAgICA8IS0tIElubmVyIHZvaWQgdHJpYW5nbGUgKHdoaXRlKSAtLT4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjIwLDEzMCAxNTUsMjYwIDI4NSwyNjAiIGZpbGw9IndoaXRlIi8+CgogICAgPCEtLSBEZXB0aDogaW5uZXIgbGVmdCBlZGdlIGRhcmsgLS0+CiAgICA8cG9seWdvbiBwb2ludHM9IjIyMCwxMzAgMTYwLDI0MCAxNjAsMTQwIiBmaWxsPSIjMGQyMjQ3IiBvcGFjaXR5PSIwLjUiLz4KICAgIDxwb2x5Z29uIHBvaW50cz0iMjIwLDEzMCAyODAsMjQwIDI4MCwxNDAiIGZpbGw9IiMwZDIyNDciIG9wYWNpdHk9IjAuMyIvPgogIDwvZz4KCiAgPCEtLSBHT0xEIHRleHQgb24gbGVmdCBmYWNlIC0tPgogIDx0ZXh0IHRyYW5zZm9ybT0icm90YXRlKC02MCAxNDAgMjEwKSIgeD0iOTAiIHk9IjIyMCIKICAgICAgICBmb250LWZhbWlseT0iJ0FyaWFsIEJsYWNrJyxIZWx2ZXRpY2Esc2Fucy1zZXJpZiIKICAgICAgICBmb250LXNpemU9IjM4IiBmb250LXdlaWdodD0iOTAwIgogICAgICAgIGZpbGw9IndoaXRlIiBsZXR0ZXItc3BhY2luZz0iMiI+R09MRDwvdGV4dD4KCiAgPCEtLSBTSE9SRSB0ZXh0IG9uIHJpZ2h0IGZhY2UgLS0+CiAgPHRleHQgdHJhbnNmb3JtPSJyb3RhdGUoNjAgMzAwIDE0MCkiIHg9IjI0OCIgeT0iMTQ1IgogICAgICAgIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLEhlbHZldGljYSxzYW5zLXNlcmlmIgogICAgICAgIGZvbnQtc2l6ZT0iMjYiIGZvbnQtd2VpZ2h0PSI5MDAiCiAgICAgICAgZmlsbD0id2hpdGUiIGxldHRlci1zcGFjaW5nPSIxIj5TSE9SRTwvdGV4dD4KCiAgPCEtLSBMQUJTIHRleHQgb24gYm90dG9tIGZhY2UgLS0+CiAgPHRleHQgeD0iMjIwIiB5PSIzNTIiCiAgICAgICAgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsSGVsdmV0aWNhLHNhbnMtc2VyaWYiCiAgICAgICAgZm9udC1zaXplPSI0NCIgZm9udC13ZWlnaHQ9IjkwMCIKICAgICAgICBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIKICAgICAgICBsZXR0ZXItc3BhY2luZz0iNiI+TEFCUzwvdGV4dD4KPC9zdmc+" alt="Gold Shore Labs" class="gsl-logo-img"/>
+      </a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -551,6 +788,7 @@
     const notice = document.getElementById('formNotice');
     btn.disabled = true;
     btn.textContent = 'Submitting…';
+    notice.textContent = '';
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -559,24 +797,23 @@
       });
       const data = await res.json();
       if (data.ok) {
-        notice.textContent = 'Intake received. You will be contacted if your request qualifies.';
-        notice.style.color = 'var(--medical-teal)';
+        notice.textContent = 'Received. You will be contacted if your request qualifies.';
+        notice.style.color = 'rgba(255,255,255,0.6)';
         e.target.reset();
         document.getElementById('formStartedAt').value = Date.now();
         document.getElementById('dedupeKey').value = crypto.randomUUID().replace(/-/g,'') + crypto.randomUUID().replace(/-/g,'');
       } else {
         notice.textContent = data.error?.message || 'Submission failed. Email rob@armsway.com directly.';
-        notice.style.color = 'var(--medical-red)';
+        notice.style.color = '#fca5a5';
       }
     } catch {
       notice.textContent = 'Network error. Email rob@armsway.com directly.';
-      notice.style.color = 'var(--medical-red)';
+      notice.style.color = '#fca5a5';
     } finally {
       btn.disabled = false;
-      btn.textContent = 'Submit intake request →';
+      btn.textContent = 'Submit request →';
     }
   });
 </script>
-
 </body>
 </html>
