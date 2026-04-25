@@ -1,0 +1,35 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@f845491f05b97ad03c62d592b02e7536c4b2687c # v5.3.0
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          playwright install --with-deps chromium
+
+      - name: Run tests
+        run: |
+          python3 -m http.server 8000 &
+          SERVER_PID=$!
+          sleep 5
+          python3 tests/test_inquiry_form.py
+          python3 tests/test_form_validation.py
+          kill $SERVER_PID
