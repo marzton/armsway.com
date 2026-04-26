@@ -3,443 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Armsway — by invitation." />
-  <meta name="robots" content="noindex, nofollow" />
-  <title>Armsway</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Syne+Mono&display=swap" rel="stylesheet" />
-
-  <style>
-    :root {
-      --void: #08090a;
-      --void-mid: #111316;
-      --void-soft: #1c1f24;
-      --edge: #2a2e35;
-      --signal: #e8f4f0;
-      --signal-dim: rgba(232,244,240,0.5);
-      --signal-ghost: rgba(232,244,240,0.08);
-      --accent: #7fffd4;  /* aquamarine — precision, not warmth */
-      --accent-dim: rgba(127,255,212,0.15);
-      --accent-ghost: rgba(127,255,212,0.04);
-      --danger: #ff4444;
-      --sans: 'Syne', system-ui, sans-serif;
-      --mono: 'Syne Mono', 'Courier New', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; height: 100%; }
-
-    body {
-      font-family: var(--sans);
-      background: var(--void);
-      color: var(--signal);
-      min-height: 100vh;
-      display: grid;
-      grid-template-rows: 1fr auto;
-      -webkit-font-smoothing: antialiased;
-      position: relative;
-      overflow-x: hidden;
-    }
-
-    /* Grid background */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(127,255,212,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(127,255,212,0.03) 1px, transparent 1px);
-      background-size: 48px 48px;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* Vignette */
-    body::after {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(ellipse at center, transparent 30%, var(--void) 100%);
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 50;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-    }
-
-    .nav-wordmark {
-      font-family: var(--sans);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--signal);
-      text-decoration: none;
-    }
-
-    .nav-badge {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--accent);
-      border: 1px solid rgba(127,255,212,0.3);
-      padding: 0.3rem 0.75rem;
-      border-radius: 2px;
-    }
-
-    /* ── MAIN ── */
-    main {
-      position: relative;
-      z-index: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 8rem 2rem 4rem;
-      text-align: center;
-    }
-
-    .eyebrow {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .eyebrow::before,
-    .eyebrow::after {
-      content: '';
-      display: block;
-      width: 40px;
-      height: 1px;
-      background: rgba(127,255,212,0.3);
-    }
-
-    .headline {
-      font-family: var(--sans);
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 0.95;
-      color: var(--signal);
-      margin-bottom: 2.5rem;
-    }
-
-    .headline span {
-      display: block;
-      color: var(--accent);
-    }
-
-    .subline {
-      font-size: 1rem;
-      font-weight: 400;
-      color: var(--signal-dim);
-      max-width: 38ch;
-      line-height: 1.7;
-      margin: 0 auto 4rem;
-    }
-
-    /* ── INTAKE FORM ── */
-    .intake {
-      width: 100%;
-      max-width: 480px;
-      background: var(--void-soft);
-      border: 1px solid var(--edge);
-      padding: 2.5rem;
-      text-align: left;
-      position: relative;
-    }
-
-    .intake::before {
-      content: '';
-      position: absolute;
-      top: -1px; left: 0; right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent);
-    }
-
-    .intake-title {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-    }
-
-    .intake-form {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-
-    .intake-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-    }
-
-    .intake-field label {
-      font-family: var(--mono);
-      font-size: 0.6rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--signal-dim);
-    }
-
-    .intake-field input,
-    .intake-field textarea {
-      background: var(--void-mid);
-      border: 1px solid var(--edge);
-      color: var(--signal);
-      font-family: var(--sans);
-      font-size: 0.9rem;
-      padding: 0.75rem 1rem;
-      outline: none;
-      transition: border-color 0.2s;
-      border-radius: 1px;
-      width: 100%;
-    }
-
-    .intake-field input:focus,
-    .intake-field textarea:focus {
-      border-color: rgba(127,255,212,0.4);
-    }
-
-    .intake-field textarea {
-      resize: vertical;
-      min-height: 80px;
-    }
-
-    .intake-field input::placeholder,
-    .intake-field textarea::placeholder {
-      color: rgba(232,244,240,0.2);
-      font-size: 0.85rem;
-    }
-
-    .intake-submit {
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 0.7rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: 0.85rem 1.5rem;
-      cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      width: 100%;
-      margin-top: 0.5rem;
-    }
-
-    .intake-submit:hover {
-      background: var(--accent-dim);
-    }
-
-    .intake-submit:disabled {
-      opacity: 0.4;
-      cursor: not-allowed;
-    }
-
-    .intake-notice {
-      font-family: var(--mono);
-      font-size: 0.62rem;
-      letter-spacing: 0.08em;
-      margin-top: 0.75rem;
-      min-height: 1.2em;
-    }
-
-    /* ── SPECS STRIP ── */
-    .specs {
-      display: flex;
-      gap: 3rem;
-      margin-top: 4rem;
-      padding-top: 3rem;
-      border-top: 1px solid var(--edge);
-    }
-
-    .spec {
-      text-align: center;
-    }
-
-    .spec-value {
-      font-family: var(--sans);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--signal);
-      margin-bottom: 0.3rem;
-    }
-
-    .spec-key {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--signal-dim);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      position: relative;
-      z-index: 1;
-      padding: 1.5rem 3rem;
-      border-top: 1px solid var(--edge);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-copy {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(232,244,240,0.2);
-    }
-
-    .footer-legal {
-      display: flex;
-      gap: 2rem;
-      list-style: none;
-    }
-
-    .footer-legal a {
-      font-family: var(--mono);
-      font-size: 0.58rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(232,244,240,0.2);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
-
-    .footer-legal a:hover { color: var(--accent); }
-
-    @media (max-width: 640px) {
-      nav { padding: 1.25rem 1.5rem; }
-      main { padding: 7rem 1.5rem 3rem; }
-      .specs { flex-direction: column; gap: 1.5rem; align-items: center; }
-      footer { flex-direction: column; gap: 1rem; text-align: center; }
-      .intake { padding: 1.75rem; }
-    }
-  </style>
+  <meta name="description" content="ArmsWay disposable blood-pressure cuff sleeve to reduce cross-contamination risk in clinical settings." />
+  <title>ArmsWay™ | Infection-Control BP Cuff Sleeves</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
+  <header>
+    <div class="container">
+      <div class="topnav">
+        <div class="brand">
+          <img class="brand-logo" src="assets/logo-armsway.svg" alt="ArmsWay logo" />
+          <div class="brand-copy">
+            <h1>ArmsWay™</h1>
+            <p>Medical infection-control sleeve system</p>
+          </div>
+        </div>
+        <span class="status-pill">Production Ready • Cloudflare Worker</span>
+      </div>
 
-  <nav>
-    <a href="/" class="nav-wordmark">Armsway</a>
-    <span class="nav-badge">Private access</span>
-  </nav>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <h2 id="hero-title">Disposable BP cuff barrier that helps block 99.9% of contaminants.</h2>
+          <p>Built for hospitals, clinics, EMS teams, and long-term care environments that need fast workflow and better cross-contamination protection at the point of care.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#inquiry">Request Pricing</a>
+            <a class="btn btn-secondary" href="mailto:info@armsway.com">Contact Sales</a>
+          </div>
+        </div>
 
-  <main>
-    <p class="eyebrow">Patented technology</p>
-    <h1 class="headline">
-      Built for<br>
-      <span>what's next.</span>
-    </h1>
-    <p class="subline">
-      Armsway is a purpose-built product under selective access. If you received an invitation or have a specific inquiry, use the form below.
-    </p>
-
-    <div class="intake">
-      <p class="intake-title">Request access or inquire</p>
-      <form class="intake-form" id="intakeForm" method="POST" action="/api/contact">
-        <div class="intake-field">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required placeholder="Your name" autocomplete="name" />
-        </div>
-        <div class="intake-field">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email" />
-        </div>
-        <div class="intake-field">
-          <label for="org">Organization</label>
-          <input type="text" id="org" name="company" placeholder="Optional" />
-        </div>
-        <div class="intake-field">
-          <label for="message">Context</label>
-          <textarea id="message" name="message" required placeholder="Brief context for your inquiry"></textarea>
-        </div>
-        <input type="hidden" name="subject" value="armsway-inquiry" />
-        <button type="submit" class="intake-submit" id="intakeSubmit">Submit inquiry &rarr;</button>
-        <p class="intake-notice" id="intakeNotice" aria-live="polite"></p>
-      </form>
+        <aside class="hero-card" aria-label="Product status details">
+          <h3>Deployment Status</h3>
+          <ul class="meta">
+            <li><span>Domain</span><strong>armsway.com</strong></li>
+            <li><span>Delivery</span><strong>Cloudflare Worker Assets</strong></li>
+            <li><span>Build</span><strong>Static + responsive CSS</strong></li>
+            <li><span>Lead intake</span><strong>Secure POST endpoint</strong></li>
+          </ul>
+        </aside>
+      </section>
     </div>
+  </header>
 
-    <div class="specs">
-      <div class="spec">
-        <div class="spec-value">US</div>
-        <div class="spec-key">Patent jurisdiction</div>
-      </div>
-      <div class="spec">
-        <div class="spec-value">&#x25CB;</div>
-        <div class="spec-key">Selective access</div>
-      </div>
-      <div class="spec">
-        <div class="spec-value">GSL</div>
-        <div class="spec-key">Gold Shore Labs</div>
-      </div>
-    </div>
+  <main class="container">
+    <section class="section grid-2" aria-label="Feature highlights">
+      <article class="panel">
+        <h3>Why providers choose ArmsWay</h3>
+        <ul class="icon-list">
+          <li>
+            <img class="icon" src="assets/icon-shield.svg" alt="Shield icon" />
+            <span>Single-use barrier for reusable cuffs during routine vitals.</span>
+          </li>
+          <li>
+            <img class="icon" src="assets/icon-clinic.svg" alt="Clinic icon" />
+            <span>Designed for hospitals, urgent care, outpatient, and EMS workflows.</span>
+          </li>
+          <li>
+            <img class="icon" src="assets/icon-check.svg" alt="Check icon" />
+            <span>Simple staff adoption with low training overhead.</span>
+          </li>
+        </ul>
+      </article>
+
+      <article id="inquiry" class="panel">
+        <h3>Request quote / bulk ordering</h3>
+        <form class="inquiry-form" method="POST" action="https://armsway.com-private.goldshore.workers.dev/inquiry">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            Company / Facility
+            <input type="text" name="company" autocomplete="organization" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" required placeholder="Quantity, location, and target timeline"></textarea>
+          </label>
+
+          <button type="submit">Send Inquiry</button>
+        </form>
+      </article>
+    </section>
   </main>
 
   <footer>
-    <p class="footer-copy">&copy; 2025 Armsway / Gold Shore Labs. All rights reserved.</p>
-    <ul class="footer-legal">
-      <li><a href="mailto:rob@armsway.com">Contact</a></li>
-      <li><a href="https://goldshore.ai" target="_blank" rel="noopener">Gold Shore Labs</a></li>
-    </ul>
+    <div class="container footer-grid">
+      <p>© 2026 ArmsWay™ • 7072 Hope Hill Rd, Brooksville, FL 34601 • <a href="mailto:info@armsway.com">info@armsway.com</a></p>
+      <p class="small">Patent / legal and privacy pages can be linked here during final legal review.</p>
+    </div>
   </footer>
-
-  <script>
-    const form = document.getElementById('intakeForm');
-    const notice = document.getElementById('intakeNotice');
-    const btn = document.getElementById('intakeSubmit');
-
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      btn.disabled = true;
-      btn.textContent = 'Sending…';
-      notice.textContent = '';
-
-      try {
-        const res = await fetch('/api/contact', {
-          method: 'POST',
-          body: new FormData(form),
-        });
-        if (res.ok) {
-          notice.textContent = 'Received. You will hear from us if there is a fit.';
-          notice.style.color = '#7fffd4';
-          form.reset();
-        } else {
-          throw new Error();
-        }
-      } catch {
-        notice.textContent = 'Submission failed. Email rob@armsway.com directly.';
-        notice.style.color = '#ff4444';
-      } finally {
-        btn.disabled = false;
-        btn.textContent = 'Submit inquiry →';
-      }
-    });
-  </script>
-
 </body>
 </html>
