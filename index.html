@@ -2,39 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>ArmsWay™ - Infection Control BP Sleeve</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Protect patients from cross-contamination with ArmsWay™ disposable BP cuff sleeves. Patented design. Trusted by professionals.">
+  <meta name="description" content="ArmsWay disposable blood-pressure cuff sleeve to reduce cross-contamination risk in clinical settings." />
+  <title>ArmsWay™ | Infection-Control BP Cuff Sleeves</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
-  <link rel="icon" href="favicon.ico" />
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="ArmsWay Logo" class="logo" />
-    <h1>ArmsWay™</h1>
-    <p class="tagline">The Only BP Cuff Sleeve Blocking 99.9% of Contaminants</p>
+    <div class="container">
+      <div class="topnav">
+        <div class="brand">
+          <img class="brand-logo" src="assets/logo-armsway.svg" alt="ArmsWay logo" />
+          <div class="brand-copy">
+            <h1>ArmsWay™</h1>
+            <p>Medical infection-control sleeve system</p>
+          </div>
+        </div>
+        <span class="status-pill">Production Ready • Cloudflare Worker</span>
+      </div>
+
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <h2 id="hero-title">Disposable BP cuff barrier that helps block 99.9% of contaminants.</h2>
+          <p>Built for hospitals, clinics, EMS teams, and long-term care environments that need fast workflow and better cross-contamination protection at the point of care.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#inquiry">Request Pricing</a>
+            <a class="btn btn-secondary" href="mailto:info@armsway.com">Contact Sales</a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Product status details">
+          <h3>Deployment Status</h3>
+          <ul class="meta">
+            <li><span>Domain</span><strong>armsway.com</strong></li>
+            <li><span>Delivery</span><strong>Cloudflare Worker Assets</strong></li>
+            <li><span>Build</span><strong>Static + responsive CSS</strong></li>
+            <li><span>Lead intake</span><strong>Secure POST endpoint</strong></li>
+          </ul>
+        </aside>
+      </section>
+    </div>
   </header>
 
-  <section class="hero">
-    <h2>Disposable. Protective. Patented.</h2>
-    <p>Designed to reduce hospital-acquired infections during routine blood pressure readings. Used by leading hospitals nationwide.</p>
-    <a href="#inquiry" class="cta">Request Pricing / Bulk Orders</a>
-  </section>
+  <main class="container">
+    <section class="section grid-2" aria-label="Feature highlights">
+      <article class="panel">
+        <h3>Why providers choose ArmsWay</h3>
+        <ul class="icon-list">
+          <li>
+            <img class="icon" src="assets/icon-shield.svg" alt="Shield icon" />
+            <span>Single-use barrier for reusable cuffs during routine vitals.</span>
+          </li>
+          <li>
+            <img class="icon" src="assets/icon-clinic.svg" alt="Clinic icon" />
+            <span>Designed for hospitals, urgent care, outpatient, and EMS workflows.</span>
+          </li>
+          <li>
+            <img class="icon" src="assets/icon-check.svg" alt="Check icon" />
+            <span>Simple staff adoption with low training overhead.</span>
+          </li>
+        </ul>
+      </article>
 
-  <section id="inquiry" class="inquiry-form">
-    <h3>Interested in a Quote?</h3>
-    <form method="POST" action="https://armsway.com-private.goldshore.workers.dev/inquiry">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="company" placeholder="Hospital / Clinic / Business" />
-      <textarea name="message" placeholder="Quantity, location, timeframe…" rows="4" required></textarea>
-      <button type="submit">Send Inquiry</button>
-    </form>
-  </section>
+      <article id="inquiry" class="panel">
+        <h3>Request quote / bulk ordering</h3>
+        <form class="inquiry-form" method="POST" action="https://armsway.com-private.goldshore.workers.dev/inquiry">
+          <label>
+            Name
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+
+          <label>
+            Email
+            <input type="email" name="email" autocomplete="email" required />
+          </label>
+
+          <label>
+            Company / Facility
+            <input type="text" name="company" autocomplete="organization" />
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" required placeholder="Quantity, location, and target timeline"></textarea>
+          </label>
+
+          <button type="submit">Send Inquiry</button>
+        </form>
+      </article>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 ArmsWay™ | US Patent #XXXXXXX | <a href="mailto:info@armsway.com">info@armsway.com</a></p>
-    <span>Privacy</span> • <span>Legal &amp; IP Notice</span>
+    <div class="container footer-grid">
+      <p>© 2026 ArmsWay™ • 7072 Hope Hill Rd, Brooksville, FL 34601 • <a href="mailto:info@armsway.com">info@armsway.com</a></p>
+      <p class="small">Patent / legal and privacy pages can be linked here during final legal review.</p>
+    </div>
   </footer>
 </body>
 </html>
