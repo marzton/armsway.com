@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t d">
+  <title id="t">ArmsWay Logo</title>
+  <desc id="d">Stylized arm cuff shield logo</desc>
+  <rect width="64" height="64" rx="14" fill="#0b5fff"/>
+  <path d="M16 33c0-8.3 6.7-15 15-15h9v8h-9a7 7 0 0 0 0 14h9v8h-9c-8.3 0-15-6.7-15-15Z" fill="#fff"/>
+  <path d="M43 18h5v30h-5z" fill="#7dd3fc"/>
+</svg>
