@@ -2,6 +2,7 @@
 // Serves: armsway.com + www.armsway.com
 {
   "name": "armsway",
+  // No "main" entrypoint yet: this deploy is assets-only via "assets.directory".
   "compatibility_date": "2025-03-07",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
