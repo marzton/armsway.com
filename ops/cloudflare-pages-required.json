@@ -1,6 +1,7 @@
 {
   "project_name": "armsway",
   "production_domains": [
+    "armsway.com",
     "www.armsway.com"
   ]
 }
