@@ -35,9 +35,17 @@ jobs:
           cfg = json.load(open('ops/cloudflare-pages-required.json', 'r', encoding='utf-8'))
           account = os.environ['CLOUDFLARE_ACCOUNT_ID']
           script = cfg['project_name']
-          # Check Worker routes
-          routes = cf_get(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/scripts/{script}/routes")
-          patterns = {r['pattern'] for r in routes}
+          # Check Worker routes via supported zone-scoped endpoint, then filter by script
+          zones = cf_get(f"https://api.cloudflare.com/client/v4/zones?account.id={account}&per_page=50")
+          patterns = set()
+          for zone in zones:
+              zone_id = zone.get('id')
+              if not zone_id:
+                  continue
+              zone_routes = cf_get(f"https://api.cloudflare.com/client/v4/zones/{zone_id}/workers/routes")
+              for route in zone_routes:
+                  if route.get('script') == script and route.get('pattern'):
+                      patterns.add(route['pattern'])
           # Check custom domains (available in newer Workers API)
           try:
               domains_data = cf_get(f"https://api.cloudflare.com/client/v4/accounts/{account}/workers/scripts/{script}/domains")
