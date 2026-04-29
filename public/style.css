@@ -1,0 +1,295 @@
+:root {
+  --bg: #f4f8ff;
+  --surface: #ffffff;
+  --ink: #0f172a;
+  --muted: #475569;
+  --brand: #0b5fff;
+  --brand-dark: #0a45b4;
+  --accent: #0f766e;
+  --ring: #bfdbfe;
+  --border: #dbe4f0;
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+* { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+.container {
+  width: min(1100px, 92vw);
+  margin: 0 auto;
+}
+
+header {
+  background: linear-gradient(135deg, #0b5fff 0%, #09388f 100%);
+  color: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.brand-logo {
+  width: 42px;
+  height: 42px;
+}
+
+.brand-copy h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+}
+
+.brand-copy p {
+  margin: 0;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 999px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.75rem;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0 3rem;
+}
+
+.hero h2 {
+  margin: 0 0 1rem;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  line-height: 1.1;
+}
+
+.hero p {
+  color: #e2ebff;
+  margin: 0;
+  max-width: 56ch;
+  line-height: 1.7;
+}
+
+.hero-actions {
+  margin-top: 1.4rem;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  border: 0;
+  border-radius: 0.7rem;
+  padding: 0.8rem 1rem;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary {
+  background: #fff;
+  color: #0b3bb4;
+}
+
+.btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  color: #fff;
+}
+
+.hero-card {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.9rem;
+  padding: 1rem;
+  backdrop-filter: blur(3px);
+}
+
+.hero-card h3 {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+}
+
+.meta {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.meta li {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.6rem;
+  padding: 0.6rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.86rem;
+}
+
+.section {
+  padding: 2.4rem 0;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.9rem;
+  box-shadow: var(--shadow);
+  padding: 1.1rem;
+}
+
+.panel h3 {
+  margin-top: 0;
+}
+
+.icon-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.icon-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  color: var(--muted);
+}
+
+.icon {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+  margin-top: 0.1rem;
+}
+
+.inquiry-form {
+  display: grid;
+  gap: 0.8rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+input,
+textarea {
+  width: 100%;
+  border: 1px solid #cdd8e8;
+  background: #fff;
+  border-radius: 0.6rem;
+  padding: 0.72rem;
+  font: inherit;
+}
+
+input:focus,
+textarea:focus {
+  outline: 3px solid var(--ring);
+  border-color: #93c5fd;
+}
+
+button[type="submit"] {
+  background: var(--brand);
+  color: #fff;
+  border: 0;
+  border-radius: 0.6rem;
+  padding: 0.85rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover {
+  background: var(--brand-dark);
+}
+
+footer {
+  background: #0f172a;
+  color: #e2e8f0;
+  padding: 1.25rem 0;
+  margin-top: 2.4rem;
+}
+
+footer .footer-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.small {
+  font-size: 0.84rem;
+  color: #94a3b8;
+}
+
+@media (max-width: 900px) {
+  .hero,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .status-pill {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .topnav {
+    align-items: flex-start;
+  }
+
+  .brand-copy h1 {
+    font-size: 1rem;
+  }
+
+  .hero {
+    padding-top: 1.3rem;
+    padding-bottom: 2rem;
+  }
+}
