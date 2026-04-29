@@ -1,5 +1,5 @@
 {
-  "name": "armsway",
+  "name": "armsway-com",
   "main": "src/index.ts",
   "compatibility_date": "2025-03-07",
   "compatibility_flags": [
@@ -14,6 +14,33 @@
     "CONTACT_TO_EMAIL": "rob@armsway.com",
     "ACCESS_MODE": "selective"
   },
+  "kv_namespaces": [
+    {
+      "binding": "CACHE_KV",
+      "id": "f77de112d2019e5456a3198a8bb50bd2"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "INQUIRY_QUEUE",
+        "queue": "armsway-inquiry-queue"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "armsway-inquiry-queue",
+        "max_batch_size": 10,
+        "max_batch_timeout": 30
+      }
+    ]
+  },
+  "services": [
+    {
+      "binding": "UTILS_SERVICE",
+      "service": "goldshore-utils"
+    }
+  ],
   "assets": {
     "directory": "./public",
     "binding": "ASSETS"
