@@ -6,7 +6,7 @@
 | `dist/` | `armsway` Pages | `armsway.com`, `www.armsway.com` | ✅ Live |
 
 ## Cloudflare Account
-- **Account:** Gold Shore Labs (`f77de112d2019e5456a3198a8bb50bd2`)
+- **Account:** Gold Shore Labs (`<account_id>`)
 - **Pages project:** `armsway`
 
 ## Ownership
