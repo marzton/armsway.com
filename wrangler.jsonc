@@ -3,6 +3,7 @@
 {
   "name": "armsway",
   // No "main" entrypoint yet: this deploy is assets-only via "assets.directory".
+  "main": "src/index.ts",
   "compatibility_date": "2025-03-07",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
@@ -19,7 +20,8 @@
   // CONTACT_API_KEY
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS"
   },
   "d1_databases": [
     {
