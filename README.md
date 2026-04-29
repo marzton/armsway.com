@@ -54,8 +54,6 @@ npx wrangler login
 npx wrangler deploy
 ```
 
-> Note: this config intentionally omits a `main` Worker entrypoint for now; deploy is static assets from `dist/`.
-
 3. In Cloudflare dashboard, confirm Worker routes:
    - `armsway.com/*`
    - `www.armsway.com/*`
