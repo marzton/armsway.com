@@ -2,7 +2,7 @@
 // Serves: armsway.com + www.armsway.com
 {
   "name": "armsway",
-  "main": "src/index.ts",
+  // Asset-only Pages/Workers setup: leave `main` unset until a Worker entrypoint exists.
   "compatibility_date": "2025-03-07",
   "compatibility_flags": ["nodejs_compat"],
   "observability": {
