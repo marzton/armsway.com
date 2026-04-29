@@ -1,0 +1,14 @@
+{
+  "name": "armsway",
+  "version": "1.0.0",
+  "description": "ArmsWay™ - Infection Control BP Sleeve",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "3.0.0",
+    "@cloudflare/workers-types": "4.20240101.0"
+  }
+}

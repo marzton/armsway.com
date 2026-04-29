@@ -1,10 +1,10 @@
-// armsway — NEW Worker scaffold (stealth-mode landing)
-// Serves: armsway.com + www.armsway.com
 {
   "name": "armsway",
   // Asset-only Pages/Workers setup: leave `main` unset until a Worker entrypoint exists.
   "compatibility_date": "2025-03-07",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "observability": {
     "enabled": true,
     "head_sampling_rate": 1
@@ -12,21 +12,45 @@
   "vars": {
     "ENV": "production",
     "CONTACT_TO_EMAIL": "rob@armsway.com",
-    "ACCESS_MODE": "selective"  // "open" | "selective" | "closed"
+    "ACCESS_MODE": "selective"
   },
-  // Secrets
-  // INTAKE_WEBHOOK_SECRET
-  // CONTACT_API_KEY
+  "kv_namespaces": [
+    {
+      "binding": "CACHE_KV",
+      "id": "f77de112d2019e5456a3198a8bb50bd2"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "INQUIRY_QUEUE",
+        "queue": "armsway-inquiry-queue"
+      }
+    ],
+    "consumers": [
+      {
+        "queue": "armsway-inquiry-queue",
+        "max_batch_size": 10,
+        "max_batch_timeout": 30
+      }
+    ]
+  },
+  "services": [
+    {
+      "binding": "UTILS_SERVICE",
+      "service": "goldshore-utils"
+    }
+  ],
   "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application",
+    "directory": "./public",
     "binding": "ASSETS"
   },
   "d1_databases": [
     {
       "binding": "AUDIT_DB",
       "database_name": "gs_audit_db",
-      "database_id": "1ae71d76-188f-481b-91d9-db2d39013f68"
+      "database_id": "1ae71d76-188f-481b-91d9-db2d39013f68",
+      "migrations_dir": "migrations"
     }
   ],
   "send_email": [
@@ -35,7 +59,13 @@
     }
   ],
   "routes": [
-    { "pattern": "armsway.com/*", "zone_name": "armsway.com" },
-    { "pattern": "www.armsway.com/*", "zone_name": "armsway.com" }
+    {
+      "pattern": "armsway.com/*",
+      "zone_name": "armsway.com"
+    },
+    {
+      "pattern": "www.armsway.com/*",
+      "zone_name": "armsway.com"
+    }
   ]
 }
