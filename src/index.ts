@@ -52,15 +52,24 @@ Message: ${inquiry.message}
 				try {
 					// @ts-ignore
 					const { EmailMessage } = await import('cloudflare:email');
-					const msg = new EmailMessage(
-						'no-reply@armsway.com',
-						env.CONTACT_TO_EMAIL || 'rob@armsway.com',
-						`New ArmsWay Inquiry: ${inquiry.name}`,
+					const from = 'no-reply@armsway.com';
+					const to = env.CONTACT_TO_EMAIL || 'rob@armsway.com';
+					const subject = `New ArmsWay Inquiry: ${inquiry.name}`;
+					const rawMessage = [
+						`From: ${from}`,
+						`To: ${to}`,
+						`Subject: ${subject}`,
+						'MIME-Version: 1.0',
+						'Content-Type: text/plain; charset=UTF-8',
+						'',
 						emailBody
-					);
+					].join('\r\n');
+
+					const msg = new EmailMessage(from, to, rawMessage);
 					await env.SEND_EMAIL.send(msg);
 				} catch (e) {
-					console.error('Queue email send failed:', e);
+					console.error('Queue email send failed, retrying message:', e);
+					message.retry();
 				}
 			}
 		}
