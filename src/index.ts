@@ -33,6 +33,8 @@ async function handleContactForm(request: Request, env: Env): Promise<Response> 
 		const message = formData.get('message') as string;
 		const formType = formData.get('formType') as string;
 		const dedupeKey = formData.get('dedupeKey') as string;
+		let persisted = false;
+		let emailed = false;
 
 		if (env.AUDIT_DB) {
 			try {
@@ -41,6 +43,7 @@ async function handleContactForm(request: Request, env: Env): Promise<Response> 
 				)
 					.bind(name, email, company, role, inquiry, message, formType, dedupeKey, Date.now())
 					.run();
+				persisted = true;
 			} catch (e) {
 				console.error('D1 insert failed:', e);
 			}
@@ -65,9 +68,20 @@ Message: ${message}
 					emailBody
 				);
 				await env.SEND_EMAIL.send(msg);
+				emailed = true;
 			} catch (e) {
 				console.error('Failed to send email:', e);
 			}
+		}
+
+		if (!persisted && !emailed) {
+			return new Response(JSON.stringify({ ok: false, error: { message: 'Unable to process inquiry at this time. Please retry shortly.' } }), {
+				status: 503,
+				headers: {
+					'Content-Type': 'application/json',
+					'Access-Control-Allow-Origin': '*'
+				},
+			});
 		}
 
 		return new Response(JSON.stringify({ ok: true }), {

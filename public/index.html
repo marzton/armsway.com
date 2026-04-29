@@ -544,6 +544,10 @@
 
   document.getElementById('intakeForm').addEventListener('submit', async e => {
     e.preventDefault();
+    if (!e.target.checkValidity()) {
+      e.target.reportValidity();
+      return;
+    }
     const btn = document.getElementById('submitBtn');
     const notice = document.getElementById('formNotice');
     btn.disabled = true;
