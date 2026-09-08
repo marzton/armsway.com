@@ -15,9 +15,11 @@ export interface Env {
 export default {
 	async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
 		const url = new URL(request.url);
+    if (url.pathname === '/health') return Response.json({service:'armsway-com',ok:Boolean(env.ASSETS),inquiries:env.INQUIRY_QUEUE ? 'available' : 'unavailable'});
+
 
 		if (url.pathname === '/api/info') {
-			const cached = await env.CACHE_KV.get('site_info');
+			const cached = await env.CACHE_KV?.get('site_info');
 			if (cached) return new Response(cached, { headers: { 'Content-Type': 'application/json' } });
 		}
 
@@ -25,6 +27,7 @@ export default {
 			return await handleContactForm(request, env, ctx);
 		}
 
+		if (url.pathname.startsWith('/api/')) return Response.json({error:'Not found'}, {status:404});
 		return env.ASSETS.fetch(request);
 	},
 
@@ -73,6 +76,8 @@ Message: ${inquiry.message}
 };
 
 async function handleContactForm(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
+  if (!env.AUDIT_DB || !env.INQUIRY_QUEUE) return Response.json({ok:false,error:{message:'Online intake is temporarily unavailable. Email rob@armsway.com directly.'}},{status:503});
+
 	try {
 		const formData = await request.formData();
 		const inquiryData = {

@@ -38,7 +38,7 @@ def test_form_submission_blocked_with_invalid_email():
             page.goto(f"{base_url}/index.html")
 
             # Get the form action URL
-            form = page.locator('form.inquiry-form')
+            form = page.locator('form#intakeForm')
             target_url = form.evaluate("el => el.action")
 
             request_attempted = False
