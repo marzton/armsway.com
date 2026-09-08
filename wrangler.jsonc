@@ -36,12 +36,12 @@
   ],
   "routes": [
     {
-      "pattern": "armsway.com",
-      "custom_domain": true
+      "pattern": "armsway.com/*",
+      "zone_name": "armsway.com"
     },
     {
-      "pattern": "www.armsway.com",
-      "custom_domain": true
+      "pattern": "www.armsway.com/*",
+      "zone_name": "armsway.com"
     }
   ],
   "keep_vars": true
