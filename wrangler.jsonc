@@ -1,5 +1,5 @@
 {
-  "name": "armsway",
+  "name": "armsway-com",
   "main": "src/index.ts",
   "compatibility_date": "2026-08-23",
   "compatibility_flags": [
@@ -20,27 +20,11 @@
       "id": "ef85567a77364f87809047ac1aff950c"
     }
   ],
-  "queues": {
-    "producers": [
-      {
-        "binding": "INQUIRY_QUEUE",
-        "queue": "armsway-inquiry-queue"
-      }
-    ],
-    "consumers": [
-      {
-        "queue": "armsway-inquiry-queue",
-        "max_batch_size": 10,
-        "max_batch_timeout": 30
-      }
-    ]
-  },
   "assets": {
-    "directory": "./dist",
-    "not_found_handling": "single-page-application",
     "directory": "./public",
     "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
+    "run_worker_first": true,
+    "not_found_handling": "none"
   },
   "d1_databases": [
     {
@@ -50,19 +34,15 @@
       "migrations_dir": "migrations"
     }
   ],
-  "send_email": [
-    {
-      "name": "SEND_EMAIL"
-    }
-  ],
   "routes": [
     {
-      "pattern": "armsway.com/*",
-      "zone_name": "armsway.com"
+      "pattern": "armsway.com",
+      "custom_domain": true
     },
     {
-      "pattern": "www.armsway.com/*",
-      "zone_name": "armsway.com"
+      "pattern": "www.armsway.com",
+      "custom_domain": true
     }
-  ]
+  ],
+  "keep_vars": true
 }
